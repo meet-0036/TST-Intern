@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+    <title>Budgety</title>
+
+</head>
+
+<body>
+    <div class="top">
+
+        <div class="budget">
+
+            <div class="budget__title">
+                Available Budget in <span class="budget__title--month">%Month%</span>:
+            </div>
+
+            <div class="budget__value">+ 2,345.64</div>
+
+            <div class="budget__income clearfix">
+
+                <div class="budget__income--text"><b>INCOME</b></div>
+
+                <div class="right">
+                    <div class="budget__income--value">+4,300.00</div>
+                    <div class="budget__income--percentage">00%</div>
+                </div>
+
+            </div>
+
+
+
+            <div class="budget__expenses clearfix">
+                <div class="budget__expenses--text"><b>EXPENSES</b></div>
+                <div class="right clearfix">
+                    <div class="budget__expenses--value">-1,954.36</div>
+                    <div class="budget__expenses--percentage">45%</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="bottom">
+        <div class="add">
+            <div class="add__container">
+
+                <select class="add__type">
+                    <option value="inc" selected>+</option>
+                    <option value="exp">-</option>
+                </select>
+
+                <input type="text" class="add__description" placeholder="Add description">
+                <input type="number" class="add__value" placeholder="Value">
+
+                <button class="add__btn--1">
+                    <img src="images/check-green.svg" alt="green">
+                </button>
+                
+                <button class="add__btn--2">
+                    <img src="images/check-red.svg" alt="red">
+                </button>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="income">
+
+                <h3 class="income__title">INCOME</h3>
+
+                <div class="income__list">
+
+                    <div class="item clearfix" id="income-0">
+                        <div class="item__description">Salary</div>
+                        <div class="right clearfix">
+                            <div class="item__value">+ 2,100.00</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><img src="images/cancel-icon.png"
+                                        alt="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item clearfix" id="income-1">
+                        <div class="item__description">Sold car</div>
+                        <div class="right clearfix">
+                            <div class="item__value">+ 1,500.00</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><img src="images/cancel-icon.png"
+                                        alt="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="expenses">
+                <h3 class="expenses__title">EXPENSES</h3>
+
+                <div class="expenses__list">
+
+                    <div class="item clearfix" id="expense-0">
+                        <div class="item__description">Apartment rent</div>
+                        <div class="right clearfix">
+                            <div class="item__value">- 900.00</div>
+                            <div class="item__percentage">21%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><img src="images/cancel-icon.png"
+                                        alt="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item clearfix" id="expense-1">
+                        <div class="item__description">Grocery shopping</div>
+                        <div class="right clearfix">
+
+                            <div class="item__value">- 435.28</div>
+                            <div class="item__percentage">10%</div>
+                            <div class="item__delete">
+                                <button class="item__delete--btn"><img src="images/cancel-icon.png"
+                                        alt="cancel"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
+
+
+
+<!-- 
+
+variables & functions (private) : only accessible inside of the module.
+                                  no other code can override our data.
+                                  data or code is going to be safe
+
+
+variable & functions (public) : we expose them to the public so that other functions or modules 
+                                can access and use them.
+                                is called data encapsulation.
+
+Data encapsulation : It allows us to hide the implementation details of a specific module
+                     from the outside scope so that we only expose
+
+Public interface which is sometimes called an API.
+It is extremely important to have all of this in mind when building complex applications.
+
+ -->
+
+        <div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix">
+        <div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete">
+        <button class="item__delete--btn"><img src="images/cancel-icon.png" alt="cancel"></button></div></div></div>

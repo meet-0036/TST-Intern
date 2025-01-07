@@ -1,0 +1,220 @@
+/**************** GENERAL ****************/
+* {
+    margin: 0;
+    padding:  0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #555;
+    font-family: "Roboto Mono", monospace;
+    font-size : 16px;
+    position: relative;
+    height: 100vh;
+}
+
+.red {
+    color: #FF5049 !important;
+}
+
+.red-focus:focus {
+    border: 1px solid #FF5049 !important;
+}
+
+/**************** TOP PART ****************/
+
+.top {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.35)), url(images/Desert.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.budget {
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+.budget__title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.budget__value {
+    font-size: 32px;
+    margin: 16px 0;
+}
+
+.budget__income {
+    background-color: #02ccb1;
+    padding: 0 12px;
+    height: 38px;
+    margin: 12px auto;
+    width: 85%;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.budget__income--text {
+    font-size: 14px;
+    color: black;
+}
+
+
+.right {
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   column-gap: 6px;
+} 
+
+.budget__expenses {
+    padding: 0 12px;
+    background-color: #dd3f00;
+    height: 38px;
+    margin: auto;
+    width: 85%;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.budget__expenses--text{
+    font-size: 14px;
+    color: black;
+}
+
+.add__container{
+    background-color: rgb(242, 242, 242);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 12px;
+}
+
+.add__type{
+    height: 36px;
+    width: 48px;
+    font-size: larger;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 4px;
+}
+.add__description{
+    padding: 0 8px;
+    height: 36px;
+    width: 320px;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 4px;
+}
+
+.add__value{
+    padding: 0 8px;
+    height: 36px;
+    width: 80px;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 4px;
+}
+
+.add__container img{
+    height: 18px;
+}
+
+.add__btn--1{
+    border: 2px solid rgb(228, 228, 228);
+    height: 32px;
+    width: 32px;
+    border-radius: 18px;
+    display: inline;
+}
+
+.add__btn--2{
+    border: 2px solid rgb(228, 228, 228);
+    height: 32px;
+    width: 32px;
+    border-radius: 18px;
+    display: none;
+}
+
+.container{
+    margin: 36px 0 0;
+    display: flex;
+    justify-content: center;
+    column-gap: 48px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.income{
+    width: 33%;
+}
+
+.income__title{
+    margin: 0 0 12px;
+    color: #02ccb1;
+}
+
+.expenses{
+    width: 33%;
+}
+
+.expenses__title{
+    margin: 0 0 12px;
+    color: #dd3f00;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-top: 2px solid rgb(237, 237, 237);
+}
+
+.clearfix{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.item__delete--btn{
+    background-color: #fff;
+    border: none;
+    display: none;
+    transition:display 0.4s;
+}
+
+.item__delete--btn img{
+    transform: translateY(2.5px);
+}
+
+.item:hover .item__delete--btn{
+    display: inline;
+}
+
+.item__description{
+    font-weight: 600;
+}
+
+.income .item__value{
+    color: #02ccb1;
+}
+.expenses .item__value{
+    color: #dd3f00;
+}
+
+.item__percentage{
+    color: #dd3f00;
+    background-color: #ffa29e98;
+    padding: 1px 2px;
+}
+

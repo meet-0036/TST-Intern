@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Pig Game</title>
+    <style>
+      body {
+        height: 100vh;
+        background: linear-gradient(
+          to top left,
+          #845ec2,
+          #d65db1,
+          #ff6f91,
+          #ff9671,
+          #ffc75f,
+          #f9f871
+        );
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 600px;
+      }
+
+      table,
+      tr {
+        height: 50px;
+        border-spacing: 5px;
+      }
+
+      .set {
+        border-radius: 11px;
+        border: rgb(255, 215, 36) solid 2px;
+        height: 60%;
+        font-size: 18px;
+      }
+
+      .set:hover {
+        border: rgb(135, 235, 248) solid 3px;
+      }
+
+      .set:hover input {
+        background-color: #fff;
+      }
+
+      .texts {
+        width: 100%;
+        text-align: right;
+        height: 100%;
+        font-size: 23px;
+      }
+
+      #btn--submit {
+        background: gold;
+        width: 40%;
+        height: 80%;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <table>
+        <form id="formdata" action="index.html" method="get">
+          <!--In index.html uncomment test2.js when use test2.html -->
+
+          <tr>
+            <th class="texts">
+              <label for="player--0--name">Player-1 name : </label>
+            </th>
+            <td>
+              <input
+                type="text"
+                placeholder="Write here"
+                id="player--0--name"
+                class="set"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <th class="texts">
+              <label for="player--1--name">Player-2 name : </label>
+            </th>
+            <td>
+              <input
+                type="text"
+                placeholder="Write here"
+                id="player--1--name"
+                class="set"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <input type="submit" id="btn--submit" value="Let's Play" />
+            </th>
+          </tr>
+        </form>
+      </table>
+    </div>
+
+    <script>
+      document
+        .getElementById('formdata')
+        .addEventListener('submit', function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Get the values entered by the user
+          let name1 = document.getElementById('player--0--name').value;
+          let name2 = document.getElementById('player--1--name').value;
+
+          // Redirect to the result.html page with the entered values as URL parameters
+
+          let redirectURL =
+            'index.html?name1=' +
+            encodeURIComponent(name1) +
+            '&name2=' +
+            encodeURIComponent(name2);
+
+          window.location.href = redirectURL;
+        });
+    </script>
+  </body>
+</html>
+
+<!-- pass data one page to another :
+-> Cookies
+-> Local Storage
+-> Server-Side Scripting
+-> Form Submission 
+-> AJAX
+-> Web Storage API
+-> IndexedDB
+-->
