@@ -1,0 +1,78 @@
+body {
+  font-family: poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+}
+
+.top {
+  width: 100%;
+  height: 50vh;
+  font-weight: 700;
+  background-color: rgba(0,0, 0, 0.6);
+  background-image: url(assets/bg.jpeg);
+  background-size: cover;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    margin-top: 0;
+    background-color: black;
+    opacity: 0.8;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btn--cart {
+    position: relative;
+    border: hidden;
+  margin-right: 8px;
+  padding: 6px 12px;
+  background: none;
+}
+
+.cart-count{
+    padding: 0px 4px;
+    border-radius: 24px;
+    background-color: #ff0000;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 4px;
+}
+
+.btn--home {
+  padding: 8px 16px;
+  margin-right: 24px;
+  background: none;
+  border: none;
+  color: #c8c8c8;
+}
+
+.btn--contactus {
+  padding: 6px 20px;
+  margin-right: 48px;
+  background: none;
+  border: 2px solid #898989;
+  color: #c8c8c8;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+.btn--contactus:hover {
+  background-color: rgb(106, 106, 106);
+  color: white;
+}
+
+.title{
+    top: 200px;
+    left: 50px;
+    background-color: aqua;
+}
+
