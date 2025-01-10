@@ -229,21 +229,22 @@ console.log(days1);
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-// console.log('\n\nInternationalizing Numbers (Intl) ::-- \n');
+console.log('\n\nInternationalizing Numbers (Intl) ::-- \n');
  
 const num2 = 3884764.23;
 
 const options = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'EUR',
-  // useGrouping: false,
+  style: 'currency', // prcentage
+  unit: 'celsius',   // mile-per-hour
+  currency: 'EUR',   // 
+  // useGrouping: false,  // remove separators 
 };
-
+ 
 console.log('US:      ', new Intl.NumberFormat('en-US', options).format(num2));
 console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num2));
 console.log('Syria:   ', new Intl.NumberFormat('ar-SY', options).format(num2));
 console.log(
+  'My Laptop :',
     navigator.language,
   new Intl.NumberFormat(navigator.language, options).format(num2)
 );
@@ -251,22 +252,28 @@ console.log(
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-// console.log('\n\nTimers ::-- \n');
+console.log('\n\nTimers ::-- \n');
 
 // setTimeout
-const ingredients = ['olives', 'spinach'];
+setTimeout(() => console.log('Print after 2 seconds.'),2000);
+
+const ingredients = ['olives', 'cheese']; // 'spinach' -> then stop timeout
 const pizzaTimer = setTimeout(
-    (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+    (ing1, ing2) => console.log(`Here is your pizza 🍕 with ${ing1} and ${ing2}`),
     3000,
     ...ingredients
-);
-console.log('Waiting...');
+);    // 3000milisec =  3 sec
+console.log('Waiting...');  
 
-if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+// if imcludes spinach then clearTimeout delete timeout not executed
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer); 
 
 // setInterval
 // setInterval(function () {
 //     const now = new Date();
 //     console.log(now);
-// }, 1000);
+
+// }, 3000);
+
+
 
