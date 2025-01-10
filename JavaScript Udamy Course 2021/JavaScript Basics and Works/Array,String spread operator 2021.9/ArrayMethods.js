@@ -151,7 +151,7 @@ const eurToUsd = 1.1;
 // });
 
 const movementsUSD = movements.map(mov => mov * eurToUsd);
-//  traverse on every element and each return with new aarry in movemensUSD
+//  traverse on every element and each return with new array in movemensUSD
 
 console.log('movements : ', movements);
 console.log('Map() : ', movementsUSD);
@@ -525,7 +525,7 @@ console.log('x.Fill() : ', x);
 x.fill(1); // [1,1,1,1,1,1,1]
 console.log('By x.fill() : ', x);
 
-// Array.from([lenght}, function(currentEle, currentIndex)) like map()
+// Array.from([lengh}, function(currentEle, currentIndex)) like map()
 const y = Array.from({ length: 7 }, () => 1);
 console.log('Array by from() : ', y);
 
