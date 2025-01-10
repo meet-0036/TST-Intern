@@ -30,7 +30,7 @@ console.log(yearsUntilRetire(1991, 'monarch'));
 
 // // ********** FUnction Statements And Expressions *********
 
-// var whatDoYouDo = function(job , firstName){  // function expressions.
+// let whatDoYouDo = function(job , firstName){  // function expressions.
 
 //     switch (job) {
 //         case 'teacher':
@@ -61,11 +61,11 @@ console.log(yearsUntilRetire(1991, 'monarch'));
 // bouring theory
 
 // Exculation Context : All js code need runs in an environment
-//                      A box or container which stores variables in ehich a piece of code is evaluated and executed.
+//                      A box or container which stores letiables in ehich a piece of code is evaluated and executed.
 
 // function Hoisting : In the creation phase of the execution context in ex-1 case, the global execution context.
 
-// -The function declaration calculateAge is stored in the variable object and even before the code is executed.
+// -The function declaration calculateAge is stored in the letiable object and even before the code is executed.
 
 // -then enter the execution phase,the calculateAge() is already available for us to use it.
 
@@ -77,69 +77,67 @@ console.log(yearsUntilRetire(1991, 'monarch'));
 
 // */
 
-// // ex-1
-// calculateAge(2004);
-// function calculateAge(birthyear) {
-//     return 2023 - birthyear;
-// }
+// ex-1
+console.log(calculateAge(2004));
+function calculateAge(birthyear) {
+    return 2023 - birthyear;
+}
 
 // // ex-2
-// // leftYears(2004);  --> this function is not a function declaration but a function expression and Hoisting with functions only works for function declarations.
-// var leftYears  = function(birthyear){
+// console.log(leftYears(2004));  // --> this function is not a function declaration but a function expression and Hoisting with functions only works for function declarations.
+// let leftYears  = function(birthyear){
 //     return 60 - calculateAge(birthyear);
 // }
 
 // leftYears(2004);  // it's works.
 
 // /*
-// In js wherever we create a not assigned variable this type -> always have the data type undefined.
+// In js wherever we create a not assigned letiable this type -> always have the data type undefined.
 
-// hoisting in variables : create an age variable, before we declare it so we have undefined.
+// hoisting in letiables : create an age letiable, before we declare it so we have undefined.
 
-// (ex-3)creation phase of the variable object what happens is that the code is scanned for variable declarations and the variables are then set to undefined.
+// (ex-3)creation phase of the letiable object what happens is that the code is scanned for letiable declarations and the letiables are then set to undefined.
 
-// (ex-4)So imagine that we wouldn't even have this variable declaration here.
-// If we then attempted to use the variable we wouldn't get undefined, but we would get  an error.
+// (ex-4)So imagine that we wouldn't even have this letiable declaration here.
+// If we then attempted to use the letiable we wouldn't get undefined, but we would get  an error.
 // Because then we wouldn't have any definition
 
 // */
 
-// // ex-3
-// console.log(length);
-// var length = 5 ;
-// console.log(length);
+// // ex-3 // issue with var
+console.log(len);    // undefined
+var len = 5 ;
+console.log(len);
 
 // // ex-4
 // // console.log(width);  -> throw error.
-// // var length = 5 ;  => not gives a definition
+// // let length = 5 ;  => not gives a definition
 
 // // ex-5
-// console.log(a); // undefined
-// var a = 10;  //global execution context object.
-// console.log(a); // 10
+console.log(a); // undefined
+var a = 10;  //global execution context object.
+console.log(a); // 10
 
-// function abc() {
+function abc() {
 
-//     console.log(a); //undefined
-//     var a = 20;
-//     console.log(a); // 20
+    console.log(a); //undefined , because this read own context 'a'.
+    var a = 15;  // this a and outside a is different
+    console.log(a); // 15
 
-// }
-// abc();
-// console.log(a); // 10
+}
+abc();
+console.log(a); // 10
 
 // /*
-// abc function here gets its own execution context object in which we can also store an age variable, and it can be the same name.
+// abc function here gets its own execution context object in which we can also store an a letiable, and it can be the same name.
 
-// It really doesn't matter because these are two completely different variables.
+// It really doesn't matter because these are two completely different letiables.
 
-// This variable a is defined in the variable object
+// This letiable a is defined in the letiable object of the execution context object of the a function
 
-// of the execution context object of the a function
+// while this a letiable is defined in the letiable object of the global execution context object.
 
-// while this a variable is defined in the variable object of the global execution context object.
-
-// So each one gets its own variable object,we have two different variables,and so the results when we print them are different.
+// So each one gets its own letiable object,we have two different letiables, and so the results when we print them are different.
 
 // And we can see that the Hoisting
 
@@ -149,51 +147,53 @@ console.log(yearsUntilRetire(1991, 'monarch'));
 
 // // First scoping example
 
-// var a = 'Hello!';
-// first();
+let a2 = 'Hello!';
+first();
 
-// function first() {
-//     var b = 'Hi!';
-//     second();
+function first() {
+    let b = 'Hi!';
+    second();
 
-//     function second() {
-//         var c = 'Hey!';
-//         console.log(a + b + c);  // scoping chain
+    function second() {
+        let c = 'Hey!';
+        console.log(a2 + b + c);  // scoping chain
 
-//     }
-// }
+    }
+}
 
 // // diffrence btn execution stack and scope.
 
-// var a = 'Hello!';
-// one();
+let a3 = 'Hello!';
+one();
 
-// function one() {
-//     var b = 'Hi!';
-//     two();
+function one() {
+    let b = 'Hi!';
+    two();
 
-//     function two() {
-//         var c = 'Hey!';
-//         three();
-//     }
-// }
-// function three () {
-//     var d = 'John';
-//     console.log(a + d );
-//     // console.log(a + d + c + d );
-// }
+    function two() {
+        let c = 'Hey!';
+        three();
+    }
+}
+function three () {    // parent scope : global
+    let d = 'John';
+    console.log(a3 + d );
+    // console.log(a3 + b + c + d );
+}
 
 // this keyword. -> point to our object(default window object)
 
 console.log(this); // window object
 
+
 function add(a, b) {
   console.log(a + b);
   console.log(this); // window object
 }
-add(1, 2);
+add(34,7); 
 
-var white = {
+
+let white = {
   name: 'white',
   salary1: 10000,
   salary2: 20000,
@@ -210,7 +210,7 @@ var white = {
 
 white.totalSalary();
 
-var honk = {
+let honk = {
   name: 'honk',
   salary1: 15000,
   salary2: 18000,
