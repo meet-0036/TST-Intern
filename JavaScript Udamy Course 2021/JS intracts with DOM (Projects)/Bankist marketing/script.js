@@ -149,6 +149,13 @@ const handleHover = function (args) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// sticky navigation
+
+// Don't use this way because every movement computation is runnin is badd practice
+window.addEventListener('scroll', (e) => {
+  if (section1.getBoundingClientRect().top <= 0) nav.classList.add('sticky');    
+ else nav.classList.remove('sticky');
+});
 
 
 
