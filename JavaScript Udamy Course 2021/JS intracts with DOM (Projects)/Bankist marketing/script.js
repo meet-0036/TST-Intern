@@ -15,27 +15,26 @@ const tabsContent = document.querySelectorAll('.operations__content');
 // Modal window
 
 const openModal = function (e) {
-    e.preventDefault();
-    modal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-  };
-  
-  const closeModal = function () {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
-  };
-  
-  btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
-  
-  btnCloseModal.addEventListener('click', closeModal);
-  overlay.addEventListener('click', closeModal);
-  
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();     
-    }
-  });  
+  e.preventDefault();
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
 
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+
+btnCloseModal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
 
 ///////////////////////////////////////
 // Button scrolling (on Learn more..)
@@ -44,7 +43,7 @@ btnScrollTo.addEventListener('click', function (e) {
   console.log(s1coords);
 
   //size of an element and its position relative to the viewport.
-  console.log(e.target.getBoundingClientRect()); 
+  console.log(e.target.getBoundingClientRect());
 
   console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
 
@@ -71,10 +70,10 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-
 ///////////////////////////////////////
 // Page navigation
 
+// selcting each element
 // document.querySelectorAll('.nav__link').forEach(function (el) {
 //   el.addEventListener('click', function (e) {
 //     e.preventDefault();
@@ -84,15 +83,23 @@ btnScrollTo.addEventListener('click', function (e) {
 //   });
 // });
 
+// optimize navigation (use the fact that events bubble up.)
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 
+// Event Delegation : elements that are not yet on the page on runtime.
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
+
+  console.log(e.target);
 
   // Matching strategy
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
+
+    console.log('Selected Id : ',id);
+    
+
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
