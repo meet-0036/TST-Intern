@@ -140,38 +140,42 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 
 // When we add same eventListeners in hierarchy, that time other element effected by bubbling phase events(bubbles up)
 
-/*
 ///////////////////////////////////////
 // DOM Traversing
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1'); // already selected
 
 // Going downwards: child
+// .querySelector() : finds child
 console.log(h1.querySelectorAll('.highlight'));
 console.log(h1.childNodes);
-console.log(h1.children);
+console.log(h1.children); // child nodes of h1
 h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'orangered';
+h1.lastElementChild.style.color = 'orange';
 
 // Going upwards: parents
 console.log(h1.parentNode);
 console.log(h1.parentElement);
 
+// closest() : find parent element  (no matter how far)
 h1.closest('.header').style.background = 'var(--gradient-secondary)';
 
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going sideways: siblings
-console.log(h1.previousElementSibling);
+console.log(h1.previousElementSibling); // direct access
 console.log(h1.nextElementSibling);
 
 console.log(h1.previousSibling);
 console.log(h1.nextSibling);
 
+// select all siblings
 console.log(h1.parentElement.children);
+
 [...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
+  if (el !== h1) el.style.transform = 'scale(0.7)'; // scale(0.7) - smaller 70%
 });
 
+/*
 ///////////////////////////////////////
 // Sticky navigation
 const initialCoords = section1.getBoundingClientRect();
