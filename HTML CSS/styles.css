@@ -7,7 +7,10 @@ body {
 .main {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
 }
 
 .top {
@@ -160,6 +163,10 @@ body {
   display: flex;
   overflow-x: scroll;
   grid-template-rows: auto;
+}
+
+.product-list::-webkit-scrollbar {
+  display: none;
 }
 
 
