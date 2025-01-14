@@ -5,7 +5,9 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
+const allSections = document.querySelectorAll('.section');
 const section1 = document.querySelector('#section--1');
+const header = document.querySelector('.header');
 const nav = document.querySelector('.nav');
 const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
@@ -149,13 +151,85 @@ const handleHover = function (args) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+///////////////////////////////////////
 // sticky navigation
 
 // Don't use this way because every movement computation is runnin is badd practice
-window.addEventListener('scroll', (e) => {
-  if (section1.getBoundingClientRect().top <= 0) nav.classList.add('sticky');    
- else nav.classList.remove('sticky');
+// window.addEventListener('scroll', (e) => {
+//   // if (section1.getBoundingClientRect().top <= 0) nav.classList.add('sticky');    // or 
+//   if (window.scrollY > section1.getBoundingClientRect().top) nav.classList.add('sticky');    
+//  else nav.classList.remove('sticky');
+// });
+
+// Sticky navigation: Intersection Observer API (when given visibility is occured it call callback function)
+
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;   // Take first entry 
+  // console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null, // null -> full viewport(default), else gives className of container 
+  threshold: 0,   // when observe not visible (0 -> 1 : set percentage of visiblity)
+  rootMargin: `-${navHeight}px`,   // when remaining height reach, default : (0px 0px 0px 0px)
+  //offset rectangle applied to the root's bounding box
 });
 
+headerObserver.observe(header);  // target element to observe.
+
+///////////////////////////////////////
+// Reveal sections
+
+const revealSection = function (entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);     //  stop observing a particular target element.
+    // console.log(entry.target);
+  });
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,        // root of the section
+  threshold: 0.15,   // after 15% of section visible
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
+
+// Lazy loading images : image takes more time to loading when use two image effect (diff by image size)
+const imgTargets = document.querySelectorAll('img[data-src]');   // data-src : select image 
+console.log(imgTargets);
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // Replace src with data-src
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
 
 
