@@ -172,12 +172,15 @@ console.log(h1.nextSibling);
 console.log(h1.parentElement.children);
 
 [...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.7)'; // scale(0.7) - smaller 70%
+    if (el !== h1) el.style.transform = 'scale(0.7)'; // scale(0.7) - smaller 70%
 });
 
-/*
-///////////////////////////////////////
-// Sticky navigation
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+console.log('\n\nSticky navigation ::-- \n');
+
 const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
 
@@ -188,7 +191,6 @@ window.addEventListener('scroll', function () {
   else nav.classList.remove('sticky');
 });
 
-///////////////////////////////////////
 // Sticky navigation: Intersection Observer API
 
 const obsCallback = function (entries, observer) {
@@ -205,20 +207,23 @@ const obsOptions = {
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(section1);
 
+///////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////
-// Lifecycle DOM Events
+console.log('\n\nLifecycle DOM Events ::-- \n');
+
+// set event when DOM content is loaded
 document.addEventListener('DOMContentLoaded', function (e) {
   console.log('HTML parsed and DOM tree built!', e);
 });
+
 
 window.addEventListener('load', function (e) {
   console.log('Page fully loaded', e);
 });
 
+// when user leave a site generate comformation box
 window.addEventListener('beforeunload', function (e) {
   e.preventDefault();
   console.log(e);
   e.returnValue = '';
 });
-*/
