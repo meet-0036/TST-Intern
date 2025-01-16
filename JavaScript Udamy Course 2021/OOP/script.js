@@ -192,7 +192,7 @@ class PersonCl {
   }
 
   greet() {
-    console.log(`Hey ${this.fullName}`);
+    console.log(`Hey 👋 ${this.fullName}`);
   }
 
   get age() {
@@ -235,6 +235,7 @@ console.log(Array.from([1, 3, 4, 3, 4])); // from() is Array's static method
 // console.log([1,3,4,3,4].from([1,4])); // error
 
 PersonCl.hey(); // Static method
+// jessica.hey() // error
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -245,7 +246,7 @@ const account = {
   movements: [200, 530, 120, 300],
 
   get latest() {
-    return this.movements.slice(-1).pop();
+    return this.movements.slice(-1).pop(); // without overwrite actual movements
   },
 
   set latest(mov) {
@@ -253,7 +254,7 @@ const account = {
   },
 };
 
-console.log(account.latest);
+console.log('Account latest Movement : ', account.latest);
 
 account.latest = 50;
 console.log(account.movements);
@@ -262,23 +263,25 @@ console.log(account.movements);
 
 console.log('\n\nObject.create ::-- \n');
 
+// Object.create() : static method creates a new object, using an existing object as the prototype of the newly created object.
 // No prototype property, No Constuctor fuction, No new operator
 // Manually set the prototype of an object to any oher oject
 
 const PersonProto = {
+    init(firstName, birthYear) {
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+    },
+
   calcAge() {
-    console.log(2024 - this.birthYear);
+    console.log(`${this.firstName}'s Age : `,2024 - this.birthYear);
   },
 
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
 };
 
 const steven = Object.create(PersonProto);
 console.log(steven);
-steven.name = 'Steven';
+steven.firstName = 'Steven';
 steven.birthYear = 2002;
 steven.calcAge();
 
@@ -350,7 +353,7 @@ const Person2 = function (firstName, birthYear) {
 };
 
 Person2.prototype.calcAge = function () {
-  console.log(2024 - this.birthYear);
+  console.log(`${this.firstName}'s Age : `,2024 - this.birthYear);
 };
 
 const Student = function (firstName, birthYear, course) {
