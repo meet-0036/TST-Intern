@@ -2,8 +2,9 @@
 
 class Workout {
   date = new Date();
-  id = (Date.now() + '').slice(-10);
+  id = (Date.now() + '').slice(-10); // generate unique id for each user
   clicks = 0;
+  // homeLocation = [21.2358533, 72.8737524]; // Apple hights
 
   constructor(coords, distance, duration) {
     // this.date = ...
@@ -55,15 +56,12 @@ class Cycling extends Workout {
     this._setDescription();
   }
 
-  
   calcSpeed() {
     // km/h
     this.speed = this.distance / (this.duration / 60);
     return this.speed;
   }
 }
-
-
 
 // const run1 = new Running([39, -12], 5.2, 24, 178);
 // const cycling1 = new Cycling([39, -12], 27, 95, 523);
@@ -80,13 +78,15 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 class App {
+  // private properties
   #map;
   #mapZoomLevel = 13;
   #mapEvent;
   #workouts = [];
+  homeCoords = {};
 
   constructor() {
-    // Get user's position
+    // Get user's position (Inital stage)
     this._getPosition();
 
     // Get data from local storage
@@ -99,7 +99,7 @@ class App {
   }
 
   _getPosition() {
-    // Get the position using API 
+    // Get the position using API
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
         this._loadMap.bind(this),
@@ -109,17 +109,19 @@ class App {
       );
   }
 
-  // Handling current position
+  // Handling current position when click
   _loadMap(position) {
+    console.log(position);
     const { latitude } = position.coords;
     const { longitude } = position.coords;
 
-    // Map URL 
+    // Map URL
     // console.log(`https://www.google.pt/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
+    // console.log(this.#map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -129,6 +131,7 @@ class App {
     // Handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
 
+    // displaying all markers from LocalStorage coordinates
     this.#workouts.forEach(work => {
       this._renderWorkoutMarker(work);
     });
@@ -142,8 +145,11 @@ class App {
 
   _hideForm() {
     // Empty inputs
-    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value =
-      '';
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
 
     form.style.display = 'none';
     form.classList.add('hidden');
@@ -155,6 +161,7 @@ class App {
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
   }
 
+  // create object after checking inputs is valid
   _newWorkout(e) {
     const validInputs = (...inputs) =>
       inputs.every(inp => Number.isFinite(inp));
@@ -164,7 +171,7 @@ class App {
 
     // Get data from form
     const type = inputType.value;
-    const distance = +inputDistance.value;
+    const distance = +inputDistance.value; // + convert to number
     const duration = +inputDuration.value;
     const { lat, lng } = this.#mapEvent.latlng;
     let workout;
@@ -183,6 +190,7 @@ class App {
       )
         return alert('Inputs have to be positive numbers!');
 
+      // new running Object created
       workout = new Running([lat, lng], distance, duration, cadence);
     }
 
@@ -196,6 +204,7 @@ class App {
       )
         return alert('Inputs have to be positive numbers!');
 
+      // new cycling Object created
       workout = new Cycling([lat, lng], distance, duration, elevation);
     }
 
@@ -215,6 +224,7 @@ class App {
     this._setLocalStorage();
   }
 
+  // use leaflet libraries Documentation
   _renderWorkoutMarker(workout) {
     L.marker(workout.coords)
       .addTo(this.#map)
@@ -227,6 +237,7 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
+
       .setPopupContent(
         `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
       )
@@ -296,6 +307,7 @@ class App {
       work => work.id === workoutEl.dataset.id
     );
 
+    // when selecting a workout set at center
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
       pan: {
@@ -304,25 +316,30 @@ class App {
     });
 
     // using the public interface
-    // workout.click();
+    workout.click();
   }
 
+  // Store a data in LocalStorage
   _setLocalStorage() {
-    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts)); // JSON.stringify() - converts in string with JSON format
   }
 
+  // Get data from LocalStorage
   _getLocalStorage() {
-    const data = JSON.parse(localStorage.getItem('workouts'));
+    const data = JSON.parse(localStorage.getItem('workouts')); // JSON.parse() - converts in JSON format 
 
+    // return if file is empty
     if (!data) return;
 
     this.#workouts = data;
+    // console.log(this.#workouts);
 
     this.#workouts.forEach(work => {
       this._renderWorkout(work);
     });
   }
 
+  // for use in console
   reset() {
     localStorage.removeItem('workouts');
     location.reload();
@@ -330,3 +347,6 @@ class App {
 }
 
 const app = new App();
+
+// distance(<LatLng> latlng1, <LatLng> latlng2)
+
