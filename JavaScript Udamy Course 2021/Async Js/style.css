@@ -17,23 +17,23 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .container {
   display: flex;
-  flex-flow: column;
   align-items: center;
 }
 
 .countries {
   /* margin-bottom: 8rem; */
 
-  display: inline-grid;
-  row-gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
   font-size: 2rem;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 2s;
 }
 
 .country {
@@ -42,7 +42,7 @@ body {
   font-size: 1.8rem;
   width: 30rem;
   border-radius: 0.7rem;
-  margin: 0 3rem;
+  margin: 2rem 2rem;
   /* overflow: hidden; */
 }
 
