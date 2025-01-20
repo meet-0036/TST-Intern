@@ -11,7 +11,7 @@ console.log('Our First AJAX Call: XMLHttpRequest ::-- \n');
 const renderCountry = function (data, className = '') {
   const html = `
         <article class="country ${className}">
-          <img class="country__img" src="${data.flags.png}" />
+          <img class="country__img" src="${data.flags.svg}" />
           <div class="country__data">
             <h3 class="country__name">${data.name.common}</h3>
             <h4 class="country__region">${data.region}</h4>
@@ -22,11 +22,11 @@ const renderCountry = function (data, className = '') {
         Object.entries(data.languages)[0][1]
       }</p>
       <p class="country__row"><span>💰</span>${
-        Object.entries(Object.entries(data.currencies)[0][1])[0][1]  
+        Object.entries(Object.entries(data.currencies)[0][1])[0][1]
       }</p>
           </div>
         </article>
-        `;   // also use direct values
+        `; // also use direct values
 
   // console.log(Object.entries(Object.entries(data.currencies)[0][1])[0][1]);
   countriesContainer.insertAdjacentHTML('beforeend', html);
@@ -82,105 +82,71 @@ const getCountryAndNeighbour = function (country) {
 
     // AJAX call country 2
     neighbours.forEach(neighbour => {
-        // callback inside other callback : callback hell
+      // callback inside other callback : callback hell
       getCountryData(neighbour);
     });
   });
 };
 
-setTimeout(() => {
-  console.log('1 second passed');
-  getCountryAndNeighbour('bharat');
-  setTimeout(() => {
-    console.log('2 seconds passed');
-    getCountryAndNeighbour('finland');
-    setTimeout(() => {
-      console.log('3 second passed');
-      getCountryAndNeighbour('usa');
-      setTimeout(() => {
-        console.log('4 second passed');
-        getCountryAndNeighbour('germany');
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}, 1000);
+// callbacks hall
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   getCountryAndNeighbour('bharat');
+//   setTimeout(() => {
+//     console.log('2 seconds passed');
+//     getCountryAndNeighbour('finland');
+//     setTimeout(() => {
+//       console.log('3 second passed');
+//       getCountryAndNeighbour('usa');
+//       setTimeout(() => {
+//         console.log('4 second passed');
+//         getCountryAndNeighbour('germany');
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
 
-/*
 ///////////////////////////////////////////////////////////////////////////////////////
-console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
+console.log('\n\nAJAX Call: fatch() ::-- \n');
+
+// fatch() :Object that use as container/placeholder for future values (asynchronous) [escape from callback hell]
+
 // Consuming Promises
 // Chaining Promises
 // Handling Rejected Promises
 // Throwing Errors Manually
 
-// const getCountryData = function (country) {
-//   https://restcountries.com/v3.1/alpha/${country}`)
-//     .then(function (response) {
-//       console.log(response);
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//       renderCountry(data[0]);
-//     });
-// };
+// .then(success response fn, reject(error) fn)
+// .catch(error handler)
+// .finally() - always happens no depends on fatch() results
 
-// const getCountryData = function (country) {
-//   // Country 1
-//   https://restcountries.com/v3.1/alpha/${country}`)
-//     .then(response => {
-//       console.log(response);
-
-//       if (!response.ok)
-//         throw new Error(`Country not found (${response.status})`);
-
-//       return response.json();
-//     })
-//     .then(data => {
-//       renderCountry(data[0]);
-//       // const neighbour = data[0].borders[0];
-//       const neighbour = 'dfsdfdef';
-
-//       if (!neighbour) return;
-
-//       // Country 2
-//       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
-//     })
-//     .then(response => {
-//       if (!response.ok)
-//         throw new Error(`Country not found (${response.status})`);
-
-//       return response.json();
-//     })
-//     .then(data => renderCountry(data, 'neighbour'))
-//     .catch(err => {
-//       console.error(`${err} 💥💥💥`);
-//       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
-//     })
-//     .finally(() => {
-//       countriesContainer.style.opacity = 1;
-//     });
-// };
-
-const getCountryData = function (country) {
+const getCountryDataFetch = function (country) {
   // Country 1
-  getJSON(
-https://restcountries.com/v3.1/alpha/${country}`,
-    'Country not found'
-  )
+  fetch(`https://restcountries.com/v3.1/alpha/${country}`)
+    .then(response => {
+      console.log(response);
+
+      if (!response.ok)  // take status from response(overwrite error)
+        throw new Error(`Country not found (${response.status})`);
+
+      return response.json();
+    })
     .then(data => {
       renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
+      // const neighbour = data[0].borders[0];
+      const neighbour = 'dfsdfdef';
 
-      if (!neighbour) throw new Error('No neighbour found!');
+      if (!neighbour) return;
 
       // Country 2
-      return getJSON(
-        `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
-        'Country not found'
-      );
+      return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
 
+      return response.json();
+    })
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => {
       console.error(`${err} 💥💥💥`);
@@ -191,16 +157,42 @@ https://restcountries.com/v3.1/alpha/${country}`,
     });
 };
 
+// const getCountryData = function (country) {
+//   // Country 1
+//   getJSON(
+// https://restcountries.com/v3.1/alpha/${country}`,
+//     'Country not found'
+//   )
+//     .then(data => {
+//       renderCountry(data[0]);
+//       const neighbour = data[0].borders[0];
+
+//       if (!neighbour) throw new Error('No neighbour found!');
+
+//       // Country 2
+//       return getJSON(
+//         `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+//         'Country not found'
+//       );
+//     })
+
+//     .then(data => renderCountry(data, 'neighbour'))
+//     .catch(err => {
+//       console.error(`${err} 💥💥💥`);
+//       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+
 btn.addEventListener('click', function () {
-  getCountryData('portugal');
+  getCountryDataFetch('portugal');
 });
 
-// getCountryData('australia');
-*/
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
-// Coding Challenge #1
+// console.log('\n\n Coding Challenge #1 ::-- \n');
 
 /* 
 In this challenge you will build a function 'whereAmI' which renders a country ONLY based on GPS coordinates. For that, you will use a second API to geocode coordinates.
