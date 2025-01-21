@@ -8,9 +8,10 @@ const countriesContainer = document.querySelector('.countries');
 
 // Generate html regarding the country
 const renderCountry = function (data, className = '') {
+  console.log(data);
   const html = `
         <article class="country ${className}">
-          <img class="country__img" src="${data.flags.svg}" />
+          <img class="country__img" src="${data.flags.png}" />
           <div class="country__data">
             <h3 class="country__name">${data.name.common}</h3>
             <h4 class="country__region">${data.region}</h4>
@@ -38,7 +39,7 @@ const renderError = function (msg) {
   countriesContainer.style.opacity = 1;
 };
 
-const getJSON = function (url, errorMsg = 'Something went wrong') {
+const getJSON = function (url, errorMsg = 'Something went wrong from getJSON') {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
 
@@ -46,30 +47,33 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
   });
 };
 
-/*
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('Our First AJAX Call: XMLHttpRequest ::-- \n');
 
 const getCountryData = function (country) {
   const request = new XMLHttpRequest();
 
-  if (country === country.toUpperCase()) {
-    request.open('GET', `https://restcountries.com/v3.1/alpha/${country}`);
-  } else {
-    request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
-  }
+  const ifIsCountryCode = country === country.toUpperCase();
+
+  request.open(
+    'GET',
+    ifIsCountryCode
+      ? `https://restcountries.com/v3.1/alpha/${country}`
+      : `https://restcountries.com/v3.1/name/${country}`
+  );
+
   request.send();
 
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
     console.log(data);
-    renderCountry(data);
-    // renderCountry(data, 'neighbour');
+
+    ifIsCountryCode ? renderCountry(data, 'neighbour') : renderCountry(data);
   });
 };
 
 // prittier-ignore
-// const  countryList = ['bharat','china','canada','germany','portugal','usa','russia','france','finland','italy','mexico','sweden','brazil','chile','south Africa'];
+// const  countryList = ['bharat','canada','germany','portugal','usa','russia'];
 
 // prittier-ignore
 // const countryList = [
@@ -122,6 +126,8 @@ const getCountryAndNeighbour = function (country) {
 
     // AJAX call country 2
     neighbours.forEach(neighbour => {
+      console.log(neighbour);
+
       // callback inside other callback : callback hell
       getCountryData(neighbour);
     });
@@ -262,7 +268,6 @@ TEST COORDINATES 2: -33.933, 18.474
 GOOD LUCK 😀
 */
 
-/*
 const whereAmI = function (lat, lng) {
   fetch(
     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
@@ -285,6 +290,7 @@ const whereAmI = function (lat, lng) {
     .then(data => renderCountry(data[0]))
     .catch(err => console.error(`${err.message} 💥`));
 };
+
 // whereAmI(23.030000686645508, 72.48999786376953);
 // whereAmI(-33.933, 18.474);
 // whereAmI(52.508, 13.381);
@@ -306,6 +312,7 @@ Promise.resolve('Resolved promise 2').then(res => {
 
 console.log('Test end');
 
+//  // For checking stages
 // setTimeout(() => {
 //   Promise.resolve('Resolved promise 2').then(res => {
 //     for (let i = 0; i < 1000000000; i++) {}
@@ -332,7 +339,6 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 // before take result by .then()
 // lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
-*/
 // Promisifying setTimeout
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -372,10 +378,9 @@ wait(1)
 // }, 1000);
 
 // use direct
-// Promise.resolve('abc').then(x => console.log(x));
-// Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
-/*
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('\n\nPromisifying the Geolocation API ::-- \n');
 
@@ -419,10 +424,9 @@ const whereIm = function () {
 };
 
 // btn.addEventListener('click', whereIm);
-*/
-/*
+
 ///////////////////////////////////////////////////////////////////////////////////////
-// console.log('\n\nCoding Challenge #2 ::-- \n');
+console.log('\n\nCoding Challenge #2 ::-- \n');
 
 /* 
 Build the image loading functionality that I just showed you on the screen.
@@ -542,17 +546,17 @@ const whereIam = async function () {
     renderCountry(data[0]);
 
     return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
+
+    // Reject promise returned from async function
+    throw err; // provides to catch()
   } catch (err) {
     // take error and we can modify it also
     console.error(`${err} 💥`);
     renderError(`💥 ${err.message}`);
   }
-
-  // Reject promise returned from async function
-  throw err; // provides to catch()
 };
 
-// whereIam();
+whereIam();
 
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('\n\nReturning Values from Async Functions ::-- \n');
@@ -562,13 +566,13 @@ console.log('\n\nReturning Values from Async Functions ::-- \n');
 // const city = await whereIam(); // not works (await is only works in async function)
 // console.log(city);
 
-// handle async return value method-1
+// // handle async return value method-1
 // whereIam()
 //   .then(city => console.log(`2: ${city}`))
 //   .catch(err => console.error(`2: ${err.message} 💥`))
 //   .finally(() => console.log('3: Finished getting location'));
 
-// handle async return value 2 (IIFE Promise)
+// // handle async return value 2 (IIFE Promise)
 // (async function () {
 //   try {
 //     const city = await whereIam();
@@ -642,39 +646,39 @@ const timeout = function (sec) {
   });
 };
 
-// Promise.race([
-//   getJSON(`https://restcountries.com/v3.1/name/tanzania`),
-//   timeout(1),
-// ])
-//   .then(res => console.log(res[0]))
-//   .catch(err => console.error(err));
+Promise.race([
+  getJSON(`https://restcountries.com/v3.1/name/tanzania`),
+  timeout(1),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
 
-//   // Promise.allSettled
-//   Promise.allSettled([
-//   Promise.resolve('Success'),
-//   Promise.reject('ERROR'),
-//   Promise.resolve('Another success'),
-//   ]).then(res => console.log(res));
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
 
-// Promise.all([
-//   Promise.resolve('Success'),
-//   Promise.reject('ERROR'),
-//   Promise.resolve('Another success'),
-// ])
-//   .then(res => console.log(res))
-//   .catch(err => console.error(err));
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
 
-// // Promise.any [ES2021]
-// Promise.any([
-//   Promise.resolve('Success'),
-//   Promise.reject('ERROR'),
-//   Promise.resolve('Another success'),
-// ])
-// .then(res => console.log(res))
-// .catch(err => console.error(err));
+// Promise.any [ES2021]
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// console.log('\n\nCoding Challenge #3 ::-- \n');
+console.log('\n\nCoding Challenge #3 ::-- \n');
 
 /* 
 PART 1
@@ -724,7 +728,8 @@ const loadAll = async function (imgArr) {
   try {
     const imgs = imgArr.map(async img => await createImage(img));
 
-    // const imgsEl = await Promise.all(imgs);
+    // Take all promises at once
+    const imgsEl = await Promise.all(imgs);
 
     console.log(imgsEl);
 
@@ -733,4 +738,4 @@ const loadAll = async function (imgArr) {
     console.error(err);
   }
 };
-loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
+// loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
