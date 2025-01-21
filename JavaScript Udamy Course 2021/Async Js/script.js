@@ -46,6 +46,7 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
   });
 };
 
+/*
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('Our First AJAX Call: XMLHttpRequest ::-- \n');
 
@@ -62,19 +63,38 @@ const getCountryData = function (country) {
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
     console.log(data);
-    renderCountry(data, 'neighbour');
+    renderCountry(data);
+    // renderCountry(data, 'neighbour');
   });
 };
 
-const countryList = [
-  'bharat',
-  //   'china',
-  //   'canada',
-  //   'germany',
-  //   'portugal',
-  //   'usa',
-  //   'russia',
-];
+// prittier-ignore
+// const  countryList = ['bharat','china','canada','germany','portugal','usa','russia','france','finland','italy','mexico','sweden','brazil','chile','south Africa'];
+
+// prittier-ignore
+// const countryList = [
+//     'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria',
+//     'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan',
+//     'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia',
+//     'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica',
+//     'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt',
+//     'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon',
+//     'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana',
+//     'Haiti', 'Honduras', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel',
+//     'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos',
+//     'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi',
+//     'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova',
+//     'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands',
+//     'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau',
+//     'Palestine', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania',
+//     'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal',
+//     'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea',
+//     'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan',
+//     'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu',
+//     'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela',
+//     'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+//   ];
+
 // countryList.forEach(country => getCountryData(country));
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -242,6 +262,7 @@ TEST COORDINATES 2: -33.933, 18.474
 GOOD LUCK 😀
 */
 
+/*
 const whereAmI = function (lat, lng) {
   fetch(
     `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
@@ -309,8 +330,9 @@ const lotteryPromise = new Promise(function (resolve, reject) {
 });
 
 // before take result by .then()
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
+*/
 // Promisifying setTimeout
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -350,9 +372,10 @@ wait(1)
 // }, 1000);
 
 // use direct
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
+/*
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('\n\nPromisifying the Geolocation API ::-- \n');
 
@@ -396,7 +419,7 @@ const whereIm = function () {
 };
 
 // btn.addEventListener('click', whereIm);
-
+*/
 /*
 ///////////////////////////////////////////////////////////////////////////////////////
 // console.log('\n\nCoding Challenge #2 ::-- \n');
@@ -481,28 +504,15 @@ function displayImages() {
 // on buton other event at 398
 btn.addEventListener('click', displayImages);
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////
 console.log('\n\nConsuming Promises with Async/Await ::-- \n');
 
-// Await : wait for results  
-
+// Await : wait for results
 // Error Handling With try...catch
+// Async/Await function return value in Promise object
 
+// fetch(`https://restcountries.com/v3.1/alpha/${country}`).then(res => console.log(res))
 
-// https://restcountries.com/v3.1/alpha/${country}`).then(res => console.log(res))
-
-
-const where  = async function(country) {
-    const res = await fetch(`https://restcountries.com/v3.1/name/${country}`)
-    renderCountry((await res.json())[0]);
-}
-where('bharat');
-console.log('sfsfs');
-
-
-/*
 // Asynchronous function
 const whereIam = async function () {
   try {
@@ -511,7 +521,10 @@ const whereIam = async function () {
     const { latitude: lat, longitude: lng } = pos.coords;
 
     // Reverse geocoding
-    const resGeo = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`);
+    const resGeo = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+    );
+
     if (!resGeo.ok) throw new Error('Problem getting location data');
 
     const dataGeo = await resGeo.json();
@@ -519,133 +532,104 @@ const whereIam = async function () {
 
     // Country data
     const res = await fetch(
-      `https://restcountries.com/v2/name/${dataGeo.countryCode}`
+      `https://restcountries.com/v3.1/name/${dataGeo.countryName}`
     );
-    
-    // BUG in video:
-    // if (!resGeo.ok) throw new Error('Problem getting country');
-    
-    // FIX:
+
     if (!res.ok) throw new Error('Problem getting country');
 
     const data = await res.json();
     console.log(data);
     renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
   } catch (err) {
+    // take error and we can modify it also
     console.error(`${err} 💥`);
     renderError(`💥 ${err.message}`);
   }
+
+  // Reject promise returned from async function
+  throw err; // provides to catch()
 };
-whereAmI();
-whereAmI();
-whereAmI();
-console.log('FIRST');
 
-// try {
-//   let y = 1;
-//   const x = 2;
-//   y = 3;
-// } catch (err) {
-//   alert(err.message);
-// }
+// whereIam();
 
-/*
 ///////////////////////////////////////////////////////////////////////////////////////
-console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
-// Returning Values from Async Functions
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
+console.log('\n\nReturning Values from Async Functions ::-- \n');
+// includes in whereIam()
 
-const whereAmI = async function () {
-  try {
-    // Geolocation
-    const pos = await getPosition();
-    const { latitude: lat, longitude: lng } = pos.coords;
-
-    // Reverse geocoding
-    const resGeo = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`);
-    if (!resGeo.ok) throw new Error('Problem getting location data');
-    const dataGeo = await resGeo.json();
-
-    // Country data
-    const res = await fetch(
-      `https://restcountries.com/v2/name/${dataGeo.country}`
-    );
-    if (!resGeo.ok) throw new Error('Problem getting country');
-    const data = await res.json();
-    renderCountry(data[0]);
-
-    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
-  } catch (err) {
-    console.error(`${err} 💥`);
-    renderError(`💥 ${err.message}`);
-
-    // Reject promise returned from async function
-    throw err;
-  }
-};
-
-console.log('1: Will get location');
-// const city = whereAmI();
+// console.log('1: Will get location');
+// const city = await whereIam(); // not works (await is only works in async function)
 // console.log(city);
 
-// whereAmI()
+// handle async return value method-1
+// whereIam()
 //   .then(city => console.log(`2: ${city}`))
 //   .catch(err => console.error(`2: ${err.message} 💥`))
 //   .finally(() => console.log('3: Finished getting location'));
 
-(async function () {
-  try {
-    const city = await whereAmI();
-    console.log(`2: ${city}`);
-  } catch (err) {
-    console.error(`2: ${err.message} 💥`);
-  }
-  console.log('3: Finished getting location');
-})();
-
+// handle async return value 2 (IIFE Promise)
+// (async function () {
+//   try {
+//     const city = await whereIam();
+//     console.log(`2: ${city}`);
+//   } catch (err) {
+//     console.error(`2: ${err.message} 💥`);
+//   }
+//   console.log('3: Finished getting location');
+// })();
 
 ///////////////////////////////////////////////////////////////////////////////////////
-console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
-// Running Promises in Parallel
+console.log('\n\nRunning Promises in Parallel ::-- \n');
+
+// Promise.all(promises) : return array of all promises (if any promises are not fatch) all promises rejected
+
 const get3Countries = async function (c1, c2, c3) {
+  // fatching value one after then another
   try {
     // const [data1] = await getJSON(
-    //   `https://restcountries.com/v2/name/${c1}`
+    //   `https://restcountries.com/v3.1/name/${c1}`
     // );
     // const [data2] = await getJSON(
-    //   `https://restcountries.com/v2/name/${c2}`
+    //   `https://restcountries.com/v3.1/name/${c2}`
     // );
     // const [data3] = await getJSON(
-    //   `https://restcountries.com/v2/name/${c3}`
+    //   `https://restcountries.com/v3.1/name/${c3}`
     // );
     // console.log([data1.capital, data2.capital, data3.capital]);
 
+    // fatching value at same time(parallel)
     const data = await Promise.all([
-      getJSON(`https://restcountries.com/v2/name/${c1}`),
-      getJSON(`https://restcountries.com/v2/name/${c2}`),
-      getJSON(`https://restcountries.com/v2/name/${c3}`),
+      getJSON(`https://restcountries.com/v3.1/name/${c1}`),
+      getJSON(`https://restcountries.com/v3.1/name/${c2}`),
+      getJSON(`https://restcountries.com/v3.1/name/${c3}`),
     ]);
-    console.log(data.map(d => d[0].capital));
+
+    console.log(
+      'Country capitals : ',
+      data.flatMap(d => d[0].capital)
+    );
   } catch (err) {
     console.error(err);
   }
 };
-get3Countries('portugal', 'canada', 'tanzania');
 
+// get3Countries('portugal', 'canada', 'tanzania');
 
 ///////////////////////////////////////////////////////////////////////////////////////
-console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
-// Other Promise Combinators: race, allSettled and any
-// Promise.race
+console.log('\n\nOther Promise Combinators: race, allSettled and any ::-- \n');
+
+// Promise.race : return first fulfilled(win the race 🎉 ),all promises are rejected if one is rejected
+
+// Promise.allSettled : return all the settled promises, no metter if promises got rejected or not.
+
+// Promise.any : return first fullfilled promise, ignore rejected promises
+
 (async function () {
   const res = await Promise.race([
-    getJSON(`https://restcountries.com/v2/name/italy`),
-    getJSON(`https://restcountries.com/v2/name/egypt`),
-    getJSON(`https://restcountries.com/v2/name/mexico`),
+    getJSON(`https://restcountries.com/v3.1/name/italy`),
+    getJSON(`https://restcountries.com/v3.1/name/egypt`),
+    getJSON(`https://restcountries.com/v3.1/name/mexico`),
   ]);
   console.log(res[0]);
 })();
@@ -658,41 +642,39 @@ const timeout = function (sec) {
   });
 };
 
-Promise.race([
-  getJSON(`https://restcountries.com/v2/name/tanzania`),
-  timeout(5),
-])
-  .then(res => console.log(res[0]))
-  .catch(err => console.error(err));
+// Promise.race([
+//   getJSON(`https://restcountries.com/v3.1/name/tanzania`),
+//   timeout(1),
+// ])
+//   .then(res => console.log(res[0]))
+//   .catch(err => console.error(err));
 
-// Promise.allSettled
-Promise.allSettled([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.resolve('Another success'),
-]).then(res => console.log(res));
+//   // Promise.allSettled
+//   Promise.allSettled([
+//   Promise.resolve('Success'),
+//   Promise.reject('ERROR'),
+//   Promise.resolve('Another success'),
+//   ]).then(res => console.log(res));
 
-Promise.all([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.resolve('Another success'),
-])
-  .then(res => console.log(res))
-  .catch(err => console.error(err));
+// Promise.all([
+//   Promise.resolve('Success'),
+//   Promise.reject('ERROR'),
+//   Promise.resolve('Another success'),
+// ])
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err));
 
-// Promise.any [ES2021]
-Promise.any([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.resolve('Another success'),
-])
-  .then(res => console.log(res))
-  .catch(err => console.error(err));
-*/
+// // Promise.any [ES2021]
+// Promise.any([
+//   Promise.resolve('Success'),
+//   Promise.reject('ERROR'),
+//   Promise.resolve('Another success'),
+// ])
+// .then(res => console.log(res))
+// .catch(err => console.error(err));
 
 ///////////////////////////////////////////////////////////////////////////////////////
-// console.log('\n\nOur First AJAX Call: XMLHttpRequest ::-- \n');
-// Coding Challenge #3
+// console.log('\n\nCoding Challenge #3 ::-- \n');
 
 /* 
 PART 1
@@ -711,66 +693,25 @@ TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test, turn of
 GOOD LUCK 😀
 */
 
-/*
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
-};
-
-const imgContainer = document.querySelector('.images');
-
-const createImage = function (imgPath) {
-  return new Promise(function (resolve, reject) {
-    const img = document.createElement('img');
-    img.src = imgPath;
-
-    img.addEventListener('load', function () {
-      imgContainer.append(img);
-      resolve(img);
-    });
-
-    img.addEventListener('error', function () {
-      reject(new Error('Image not found'));
-    });
-  });
-};
-
-let currentImg;
-
-// createImage('img/img-1.jpg')
-//   .then(img => {
-//     currentImg = img;
-//     console.log('Image 1 loaded');
-//     return wait(2);
-//   })
-//   .then(() => {
-//     currentImg.style.display = 'none';
-//     return createImage('img/img-2.jpg');
-//   })
-//   .then(img => {
-//     currentImg = img;
-//     console.log('Image 2 loaded');
-//     return wait(2);
-//   })
-//   .then(() => {
-//     currentImg.style.display = 'none';
-//   })
-//   .catch(err => console.error(err));
-
 // PART 1
 const loadNPause = async function () {
   try {
     // Load image 1
     let img = await createImage('img/img-1.jpg');
     console.log('Image 1 loaded');
-    await wait(2);
+    await wait(4);
     img.style.display = 'none';
 
     // Load image 1
     img = await createImage('img/img-2.jpg');
     console.log('Image 2 loaded');
-    await wait(2);
+    await wait(4);
+    img.style.display = 'none';
+
+    // Load image 3
+    img = await createImage('img/img-3.jpg');
+    console.log('Image 3 loaded');
+    await wait(4);
     img.style.display = 'none';
   } catch (err) {
     console.error(err);
@@ -782,12 +723,14 @@ const loadNPause = async function () {
 const loadAll = async function (imgArr) {
   try {
     const imgs = imgArr.map(async img => await createImage(img));
-    const imgsEl = await Promise.all(imgs);
+
+    // const imgsEl = await Promise.all(imgs);
+
     console.log(imgsEl);
+
     imgsEl.forEach(img => img.classList.add('parallel'));
   } catch (err) {
     console.error(err);
   }
 };
 loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
-*/
