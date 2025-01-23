@@ -67,6 +67,7 @@ let raj = {
 
 // console.log(raj.calcAge(2003));
 // raj.calcAge();
+
 raj.calcAge();
 console.log(raj);
 console.log("Raj age : ", raj.age);

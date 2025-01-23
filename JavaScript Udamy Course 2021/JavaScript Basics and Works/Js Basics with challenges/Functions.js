@@ -61,7 +61,7 @@ console.log(yearsUntilRetire(1991, 'monarch'));
 // bouring theory
 
 // Exculation Context : All js code need runs in an environment
-//                      A box or container which stores letiables in ehich a piece of code is evaluated and executed.
+//                      A box or container which stores variables in which a piece of code is evaluated and executed.
 
 // function Hoisting : In the creation phase of the execution context in ex-1 case, the global execution context.
 
@@ -110,8 +110,8 @@ var len = 5 ;
 console.log(len);
 
 // // ex-4
-// // console.log(width);  -> throw error.
-// // let length = 5 ;  => not gives a definition
+// console.log(length);  //  throw error.
+// let length = 5 ;   //  not gives a definition
 
 // // ex-5
 console.log(a); // undefined

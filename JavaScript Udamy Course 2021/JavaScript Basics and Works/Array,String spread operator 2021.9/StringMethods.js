@@ -15,8 +15,8 @@ console.log(airline.indexOf('r')); // to first
 console.log(airline.lastIndexOf('r')); // to last
 console.log(airline.indexOf('Portugal')); // if not found [-1]
 
-console.log(airline.slice('Slice at 4 :', 4)); // can't change original String
-console.log(airline.slice('Slice at 4 to 7 :', 4, 7));
+console.log('Slice at 4 : ', airline.slice(4)); // can't change original String
+console.log('Slice at 4 to 7 :', airline.slice(4, 7));
 // first is include and end value is not includes in result, length 7-4 = 3
 
 console.log(airline.slice(0, airline.indexOf(' ')));

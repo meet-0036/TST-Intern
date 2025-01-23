@@ -264,7 +264,7 @@ console.log('\n\nFOR OF loop ::-- \n');
 
 for (const item of menu) console.log(item);
 
-for (const item of [...menu.entries()]) console.log(item);
+for (const item of menu.entries()) console.log(item);
 
 for (const [index, element] of menu.entries()) {
   // item : 0,1 (0 -> index, 1 -> itemName)
@@ -295,7 +295,7 @@ for (const day of days) {
 }
 
 // Methods
-console.log(restaurant.order?.(0, 1) ?? 'Method does not exist'); // ?? nullish coalesce operator
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist'); // ?? nullish coalescing operator
 console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
 
 // Arrays
@@ -323,10 +323,12 @@ console.log(openStr);
 // Property VALUES
 const values = Object.values(openingHours);
 console.log(values);
+console.log(values[0].open);
 
 // Entire object
 const entries = Object.entries(openingHours);
 console.log(entries);
+console.log(entries[0][0]);
 
 // [key, value]
 for (const [day, { open, close }] of entries) {

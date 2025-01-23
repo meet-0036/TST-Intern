@@ -15,18 +15,18 @@ console.log(names);
 
 let john = ["John", "Smith", 1990, "teacher", false];
 
-john.push("blue"); // add data at last by push().
+john.push("blue"); // add data at last
 console.log(john);
 
 console.log(john.push("blue"));   // return length : 6
 
-john.unshift("Mr."); // add data at first by push().
+john.unshift("Mr."); // add data at first
 console.log(john);
 
-john.pop(); // remove data at last by pop().
+john.pop(); // remove data at last
 console.log(john);
 
-john.shift(); // remove data at First by pop().
+john.shift(); // remove data at First
 console.log(john);
 
 // search element index
@@ -81,5 +81,5 @@ while (dice !== 6) {
   if (dice === 6) console.log("Loop is about to end...");
 }
 
-// continue statement : Exit in current iretion and move to next iteration.
+// continue statement : Exit in current itretion and move to next iteration.
 // break statement : Exit to the loop.

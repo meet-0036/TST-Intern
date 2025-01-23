@@ -14,7 +14,7 @@ function calcAge(birthYear) {
       // Creating NEW variable with same name as outer scope's variable
       const firstName = 'Steven';
 
-      // Reasssigning outer scope's variable
+      // Reassigning outer scope's variable
       output = 'NEW OUTPUT!';
 
       const str = `Oh, and you're a millenial, ${firstName}`;
@@ -25,7 +25,7 @@ function calcAge(birthYear) {
       }
     }
     // console.log(str);       // outside the scope
-    console.log(millenial);
+    console.log(millenial);    // var not support block scope
     // console.log(add(2, 3));
     console.log(output);
   }
@@ -213,26 +213,40 @@ const jessica = {
   lastName: 'Williams',
   age: 27,
   family: ['Alice', 'Bob'],
+  friends: {
+    close: ['cat', 'sheep'],
+  },
 };
 
 const jessicaCopy = Object.assign({}, jessica); // copy actual values
+jessicaCopy.lastName = 'Davis';
+jessicaCopy.friends.close.push('itChange');  // 
 console.log('Shallow copies by assign() \nBefore marriage: ', jessica);
 console.log('After marriage: ', jessicaCopy);
 
 // Shallow copy
 const jessicaCopy2 = { ...jessica };
-jessicaCopy.lastName = 'Davis';
 
 jessicaCopy2.family.push('Mary');
 jessicaCopy2.family.push('John');
+jessicaCopy2.salary = 10000;
 
 console.log('Shallow copies by spread operator \nBefore marriage :', jessica);
 console.log('After marriage :', jessicaCopy2);
 
 // Deep copy/clone
 const jessicaClone = structuredClone(jessica);
-jessicaClone.family.push('Mary');
-jessicaClone.family.push('John');
+jessicaClone.family.push('haio');
+jessicaClone.family.push('ajax');
 
 console.log('Original:', jessica);
 console.log('Clone:', jessicaClone);
+
+// DeepClone with no chages 
+const jessica3 = JSON.parse(JSON.stringify(jessica)); 
+
+jessica3.firstName = "exam";
+jessica3.friends.close.push('example');
+
+console.log('DeepClone : (before)',jessica)
+console.log('DeepClone : (after)',jessica3)
