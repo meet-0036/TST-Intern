@@ -20,8 +20,8 @@ const createBooking = function (
     numPassengers,
     price,
   };
-  console.log(booking);
   bookings.push(booking);
+  console.log(booking);
 };
 
 createBooking('LH123');
@@ -57,7 +57,7 @@ const checkIn = function (flightNum, passenger) {
 // const flightNum = flight;
 // const passenger = jonas;
 
-// checkIn(flight, jonas);
+checkIn(flight, jonas);
 console.log(flight);
 console.log(jonas);
 

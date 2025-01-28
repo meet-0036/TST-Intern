@@ -1,10 +1,10 @@
 // ****************First class function ****************
-var years = [1992, 1998, 2000, 2004, 2008, 2012];
+let years = [1992, 1998, 2000, 2004, 2008, 2012];
 
 // 1. Function pass as argument
 function arrayCalc(array , func) {  // func  callback function
     
-    var arrayResult = [];
+    let arrayResult = [];
     for (let i = 0; i < array.length; i++) {
         arrayResult.push(func(array[i]));   
     }
@@ -31,13 +31,13 @@ function maxHeartRate(element) {
     }
 }
 
-var ages = arrayCalc(years , calculateAge);  // calculateAge is a callback function
+let ages = arrayCalc(years , calculateAge);  // calculateAge is a callback function
 console.log('Ages : ' + ages);
 
-var fullAge = arrayCalc(ages , isfullAge);
+let fullAge = arrayCalc(ages , isfullAge);
 console.log('Age is FullAge or not : ' + fullAge);
 
-var heartRate = arrayCalc(ages , maxHeartRate); 
+let heartRate = arrayCalc(ages , maxHeartRate); 
 console.log('heartRate : ' + heartRate);
 
 
@@ -65,10 +65,10 @@ function interviewQuestion(job) {
     }
 }
 
-var teacherQuestion = interviewQuestion('teacher');  // pass in Function
+let teacherQuestion = interviewQuestion('teacher');  // pass in Function
 teacherQuestion('John');                             // pass in returning function 
 
-var designerQuestion = interviewQuestion('designer'); 
+let designerQuestion = interviewQuestion('designer'); 
 designerQuestion('Mark');
 
 interviewQuestion('teacher')('Jonas');               //  returning Function(actual function(start execution))

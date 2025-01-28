@@ -1,6 +1,6 @@
 
 // Global object
-var john = {
+let johnObject = {
 
     name : 'John',
     yearOfBirth : 1990,
@@ -8,11 +8,11 @@ var john = {
 
 };
 
-console.log(john);
+console.log(johnObject);
 
 // Function Constructor : newly created object inherits from the constructor's prototype property.
 
-var Person = function(name1, yearOfBirth, job) {   // Empty Object is created.(Constructor)
+let Person = function(name1, yearOfBirth, job) {   // Empty Object is created.(Constructor)
 
     this.name = name1;                             // this variable of the function points to the empty object  (not points to the global object) that was created in the begining by the new operator.
     this.yearOfBirth = yearOfBirth;
@@ -33,9 +33,9 @@ Person.prototype.calculateAge = function() { // also we can use it : it's in the
 } 
 
 // These instances inherit properties & methods from "Person.prototype"
-var john = new Person('John',1990 , 'teacher');  // new : create new john Object/Instance (Use empty person object) 
-var jane = new Person('Jane', 1992, 'designer');
-var mark = new Person('Mark', 1994,  'retired');
+let john = new Person('John',1990 , 'teacher');  // new : create new john Object/Instance (Use empty person object) 
+let jane = new Person('Jane', 1992, 'designer');
+let mark = new Person('Mark', 1994,  'retired');
 
 john.calculateAge(); 
 jane.calculateAge(); 
@@ -48,27 +48,29 @@ console.log(mark.lastName);  //               ||
 
 
 // Object.create
-var personProto = {
+let personProto = {
     calculateAge : function(){
-        console.log(2023 - this.yearOfBirth);
+        console.log(this.name + ' age is : ' + (2023 - this.yearOfBirth));
     }
 };
 
-var leo = Object.create(personProto,);  // object.create builds an object that inherits directly from the one that we passed into the first argument.
+let leo = Object.create(personProto,);  // object.create builds an object that inherits directly from the one that we passed into the first argument.
 leo.name = 'Leo';
 leo.yearOfBirth = 1998;
 leo.job = 'teacher';
 
+leo.calculateAge();
+
 console.log(leo);
 
-var jane = Object.create(personProto,
+let jan = Object.create(personProto,
     {
-        name : {value : 'jane'},;
-        yearOfBirth : {value : 1988},;
-        job : {value : 'designer'},;
+        name : {value : 'jane'},
+        yearOfBirth : {value : 1988},
+        job : {value : 'designer'},
     }
 );
-console.log(jane);
+console.log(jan);
 
 
 // useful infromation
@@ -80,9 +82,9 @@ console.log(john.hasOwnProperty('lastName')); // false
 console.log(john instanceof Person);  // true
 console.log(Person instanceof Object);  // true  
 
-var x = [1,2,3,4,5];
+let x = [1,2,3,4,5];
 
-console.log(console.info(x));  // JS creates as Object-Array[]
+console.info(x);  // JS creates as Object-Array[]
 console.log(x.length);
 
 

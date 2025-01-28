@@ -99,8 +99,8 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
 
-    console.log('Selected Id : ',id);
-    
+    console.log('Selected Id : ', id);
+
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -112,7 +112,7 @@ tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
 
   // console.log(clicked);
-  
+
   // Guard clause : when click on non element area (null)
   if (!clicked) return; // nothing clicked then immediately finish this function
 
@@ -127,7 +127,7 @@ tabsContainer.addEventListener('click', function (e) {
 
   // Activate content area
   document
-    .querySelector(`.operations__content--${clicked.dataset.tab}`)  // use dataset - take attribute that set after 'data-___'
+    .querySelector(`.operations__content--${clicked.dataset.tab}`) // use dataset - take attribute that set after 'data-___'
     .classList.add('operations__content--active');
 });
 
@@ -156,8 +156,8 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 // Don't use this way because every movement computation is running is badd practice
 // window.addEventListener('scroll', (e) => {
-//   // if (section1.getBoundingClientRect().top <= 0) nav.classList.add('sticky');    // or 
-//   if (window.scrollY > section1.getBoundingClientRect().top) nav.classList.add('sticky');    
+//   // if (section1.getBoundingClientRect().top <= 0) nav.classList.add('sticky');    // or
+//   if (window.scrollY > section1.getBoundingClientRect().top) nav.classList.add('sticky');
 //  else nav.classList.remove('sticky');
 // });
 
@@ -166,7 +166,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
-  const [entry] = entries;   // Take first entry 
+  const [entry] = entries; // Take first entry
   // console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add('sticky');
@@ -174,13 +174,13 @@ const stickyNav = function (entries) {
 };
 
 const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null, // null -> full viewport(default), else gives className of container 
-  threshold: 0,   // when observe not visible (0 -> 1 : set percentage of visiblity)
-  rootMargin: `-${navHeight}px`,   // when remaining height reach, default : (0px 0px 0px 0px)
+  root: null, // null -> full viewport(default), else gives className of container
+  threshold: 0, // when observe not visible (0 -> 1 : set percentage of visiblity)
+  rootMargin: `-${navHeight}px`, // when remaining height reach, default : (0px 0px 0px 0px)
   //offset rectangle applied to the root's bounding box
 });
 
-headerObserver.observe(header);  // target element to observe.
+headerObserver.observe(header); // target element to observe.
 
 ///////////////////////////////////////
 // Reveal sections
@@ -190,14 +190,14 @@ const revealSection = function (entries, observer) {
     if (!entry.isIntersecting) return;
 
     entry.target.classList.remove('section--hidden');
-    observer.unobserve(entry.target);     //  stop observing a particular target element.
+    observer.unobserve(entry.target); //  stop observing a particular target element.
     // console.log(entry.target);
   });
 };
 
 const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,        // root of the section
-  threshold: 0.15,   // after 15% of section visible
+  root: null, // root of the section
+  threshold: 0.15, // after 15% of section visible
 });
 
 allSections.forEach(function (section) {
@@ -206,7 +206,7 @@ allSections.forEach(function (section) {
 });
 
 // Lazy loading images : image takes more time to loading when use two image effect (diff by image size)
-const imgTargets = document.querySelectorAll('img[data-src]');   // data-src : select image 
+const imgTargets = document.querySelectorAll('img[data-src]'); // data-src : select image
 // console.log(imgTargets);
 
 const loadImg = function (entries, observer) {
@@ -231,7 +231,6 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
-
 
 ///////////////////////////////////////
 // Slider
@@ -260,7 +259,7 @@ const slider = function () {
       .forEach(dot => dot.classList.remove('dots__dot--active'));
 
     document
-      .querySelector(`.dots__dot[data-slide="${slide}"]`)   // select a dot using data-set attribute 
+      .querySelector(`.dots__dot[data-slide="${slide}"]`) // select a dot using data-set attribute
       .classList.add('dots__dot--active');
   };
 
@@ -296,7 +295,7 @@ const slider = function () {
     goToSlide(0);
     createDots();
 
-    activateDot(0);  // when start page first dot is active
+    activateDot(0); // when start page first dot is active
   };
   init();
 
@@ -306,7 +305,7 @@ const slider = function () {
 
   document.addEventListener('keydown', function (e) {
     console.log(e);
-    
+
     if (e.key === 'ArrowLeft') prevSlide();
     e.key === 'ArrowRight' && nextSlide();
   });
