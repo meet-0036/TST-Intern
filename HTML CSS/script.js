@@ -108,7 +108,7 @@ const countCart = document.querySelector(".cart-count");
 const suggetions = document.querySelector(".suggest");
 
 // initializers
-const cartProducts = [];
+let cartProducts = [];
 let searchInput;
 
 // functions
@@ -189,12 +189,36 @@ const searchProduct = function () {
 const displayCart = function () {
   productCart.style.opacity = productCart.style.opacity == 0 ? 1 : 0;
 
-  const html = cartProducts.forEach((product) => {
+  // console.log(cartProducts);
+  productCartList.innerHTML = "";
+
+  cartProducts.forEach((product) => {
     productCartList.insertAdjacentHTML(
       "beforeend",
       `<li>${products[product.id - 1].name}, q : ${product.quantity}</li>`
     );
   });
+};
+
+const updateCart = function (id) {
+  let temp = {
+    id: 0,
+    quantity: 1,
+  };
+
+  let existProduct = cartProducts.find((p) => p.id === Number(id));
+
+  // console.log(existProduct);
+
+  if (existProduct) existProduct.quantity++;
+  else {
+    temp.id = Number(id);
+    cartProducts.push(temp);
+    countCart.innerHTML = `${cartProducts.length}`;
+  }
+  localStorage.setItem("cart", JSON.stringify(cartProducts));
+
+  // console.log(cartProducts);
 };
 
 // event listeners
@@ -212,13 +236,9 @@ input.addEventListener(
 
 searchBtn.addEventListener("click", searchProduct);
 
+// add to cart
 productList.addEventListener("click", function (e) {
   e.preventDefault();
-
-  let temp = {
-    id: 0,
-    quantity: 0,
-  };
 
   // console.log(e.target);
 
@@ -227,20 +247,25 @@ productList.addEventListener("click", function (e) {
     const _id = e.target.dataset.id;
     console.log("Selected Id : ", _id);
 
-    let existProduct = cartProducts.find((p) => p.id === Number(_id));
-
-    // console.log(existProduct);
-
-    if (existProduct) existProduct.quantity++;
-    else {
-      temp.id = Number(_id);
-      temp.quantity = 1;
-      cartProducts.push(temp);
-      countCart.innerHTML = `${cartProducts.length}`;
-    }
+    updateCart(_id);
 
     // console.log(cartProducts);
   }
 });
 
 cartBtn.addEventListener("click", displayCart);
+
+// store in localStorage
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("cart", JSON.stringify(cartProducts));
+});
+
+// Fatch from localStorage
+window.addEventListener("load", () => {
+  const storedCart = localStorage.getItem("cart");
+
+  if (storedCart) {
+    cartProducts = JSON.parse(storedCart);
+    countCart.innerHTML = `${cartProducts.length}`;
+  }
+});
