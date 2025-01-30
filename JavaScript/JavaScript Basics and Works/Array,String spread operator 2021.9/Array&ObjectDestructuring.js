@@ -105,14 +105,6 @@ restaurant.orderDelivery({
 const { name, openingHours: hour, categories } = restaurant;
 console.log(name, hour, categories);
 
-// take with different names
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
 // Default values (if entity is not exist in object)
 const { menu: menuList = [], starterMenu: starters = [] } = restaurant;
 console.log(menuList, starters);
@@ -123,6 +115,18 @@ let b = 999;
 const obj = { a: 23, b: 7, c: 14 };
 ({ a, b } = obj);
 console.log('Mutated values of a,b : ', a, b);
+
+// take another object entires
+const details = {
+  hobby: 'baseball',
+  from: 'usa',
+};
+
+const blondy = {
+  name: 'Blondy Vayon',
+  ...details,
+};
+console.log(blondy);
 
 // Nested objects
 const {

@@ -1,0 +1,47 @@
+/* .module.css file must provide unique class Name, it also add in build process */
+/* CSS that's scoped locally by default. This helps in avoiding naming conflicts and ensures that styles are applied only to the components they are intended  */
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  header img {
+    object-fit: contain;
+    margin-bottom: 2rem;
+    width: 11rem;
+    height: 11rem;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #9a3412;
+    font-family: 'Pacifico', cursive;
+    margin: 0;
+  }
+  
+  /* When remove header it effect all project P, So we can use this class */
+  
+  .paragraph {
+    text-align: center;
+    color: #a39191;
+    margin: 0;
+  }
+  
+  @media (min-width: 768px) {
+    header {
+      margin-bottom: 4rem;
+    }
+    header h1 {
+      font-size: 2.25rem;
+    }
+  }
+  
