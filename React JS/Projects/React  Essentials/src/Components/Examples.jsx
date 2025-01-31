@@ -5,11 +5,12 @@ import Tabs from "./Tabs.jsx";
 import { EXAMPLES } from "../data.js";
 
 export default function Examples() {
-  const [selectedTopic, setSelectedTopic] = useState(); // selectedTopic = undefined
+  const [selectedTopic, setSelectedTopic] = useState(); // selectedTopic = undefined(default)
 
   function handleSelect(selectedButton) {
-    // Event for button handler
-    setSelectedTopic(selectedButton);
+    // Handle event when button Clicked!
+    setSelectedTopic(selectedButton); // update value at same time
+    console.log(selectedTopic); // it hold previous value
   }
 
   let tabContent = "Please select a topic.";
@@ -29,28 +30,28 @@ export default function Examples() {
     <Section title="Examples" id="examples">
       <Tabs
         buttons={
-            <>
+          <>
             <TabButton
               isSelected={selectedTopic === "components"}
-              onSelect={() => handleSelect("components")}
+              onClick={() => handleSelect("components")}
             >
               Components
             </TabButton>
             <TabButton
               isSelected={selectedTopic === "jsx"}
-              onSelect={() => handleSelect("jsx")}
+              onClick={() => handleSelect("jsx")}
             >
               JSX
             </TabButton>
             <TabButton
               isSelected={selectedTopic === "props"}
-              onSelect={() => handleSelect("props")}
+              onClick={() => handleSelect("props")}
             >
               Props
             </TabButton>
             <TabButton
               isSelected={selectedTopic === "state"}
-              onSelect={() => handleSelect("state")}
+              onClick={() => handleSelect("state")}
             >
               State
             </TabButton>
@@ -94,11 +95,17 @@ export default function Examples() {
 }
 
 /*
+useState(): The function where it is used gets re-executed when the state changes.
+
+null: When set, nothing will render.
+
 Why Use the Functional Form?
-The functional form is useful when the new state depends on the previous state. React guarantees that the state passed to this function is always the most recent state, avoiding potential issues with stale state.
+The functional form is useful when the new state depends on the previous state.
+React guarantees that the state passed to this function is always the most recent state,
+avoiding potential issues with stale state.
 
 In Summary:
-iscolor is the current value of color.
-!iscolor toggles the current value (true becomes false, and false becomes true).
+isColor is the current value of color.
+!isColor toggles the current value (true becomes false, and false becomes true).
 This ensures that each click of the button toggles the color state between true and false.
- */
+*/

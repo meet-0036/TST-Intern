@@ -6,11 +6,12 @@ export default function CoreConcepts() {
     <section id="core-concepts">
       <h2>Core Concepts</h2>
       <ul>
-        {/* map() -> Iterates over each item in the CORE_CONCEPTS array. */}
-
+        {/* Generate List Dynamically */}
         {CORE_CONCEPTS.map((conceptItem) => (
           <CoreConcept key={conceptItem.title} {...conceptItem} />
         ))}
+
+        {/* When not pass a key : Each child in a list should have a unique "key" prop. */}
 
         {/* <CoreConcept // built Objct(props) add value on CoreConcept(props).
               title={CORE_CONCEPTS[0].title}

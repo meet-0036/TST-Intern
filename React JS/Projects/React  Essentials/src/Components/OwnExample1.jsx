@@ -1,6 +1,6 @@
 import { useState, Fragment } from "react";
 
-export default function OwnExample() {
+export default function OwnExample1() {
   const [color, setColor] = useState();
 
   // More practice for Dynamic Styling
@@ -14,6 +14,10 @@ export default function OwnExample() {
       <div>
         <p className={color ? "activeToggle" : undefined}>Style me!</p>
         <button onClick={changecolor}>Toggle style</button>
+
+        {/* or */}
+
+        {/* <button onClick={() => setColor((iscolor) => !iscolor))}>Toggle style</button> */}
       </div>
 
       <h3>List of Pages</h3>

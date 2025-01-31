@@ -79,14 +79,7 @@ export default function App() {
   );
 }
 
-// For vite installation
-// npm vite@latest folder_name - generate selecting config related Project
-// npm install
-// npm run dev - for start project(dev server)
-
-//or
-
-// when node module installed
+// when node module not installed
 // npx create-react-app my-app
 // cd my-app
 // npm start
