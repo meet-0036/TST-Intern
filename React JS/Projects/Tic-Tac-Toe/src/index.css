@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   line-height: 1.5;
 
   color: #ebe7ef;
@@ -23,7 +23,7 @@ body {
       rgba(241, 210, 70, 0.98),
       rgba(250, 176, 103, 0.87)
     ),
-    url("bg-pattern-dark.png");
+    url('bg-pattern-dark.png');
   background-repeat: repeat;
   background-size: 100% 100%, 30% 30%, 100% 100%;
   min-height: 110rem;
@@ -41,16 +41,16 @@ header img {
 }
 
 h1 {
-  font-family: "Caprasimo", cursive;
+  font-family: 'Caprasimo', cursive;
   font-size: 3rem;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 3rem auto;
   color: #3f3b00;
 }
 
 #game-container {
-  max-width: 40rem;
-  margin: 2rem auto;
-  padding: 1rem 1rem 0.5rem;
+  max-width: 45rem;
+  margin: 3rem auto;
+  padding: 2rem;
   border-radius: 6px;
   background: linear-gradient(#383624, #282617);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -60,11 +60,11 @@ h1 {
 #players {
   list-style: none;
   padding: 0;
-  margin: 0rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 #players li {
@@ -85,19 +85,19 @@ h1 {
 }
 
 #players button {
-  border: 1px solid #c3ba78;
-  background: rgba(222, 221, 221, 0.118);
+  width: 3rem;
+  border: none;
+  background: none;
   color: #c3ba78;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s;
-  padding: 0.15rem 0.5rem;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
   text-align: center;
 }
 
 #players button:hover {
   color: #f8ca31;
-  border-color: #f8ca31;
 }
 
 .player {
@@ -114,7 +114,7 @@ h1 {
   color: #e1dec7;
   text-transform: uppercase;
   margin: 0;
-  padding: 0.4rem;
+  padding: 0.5rem;
   border-radius: 4px;
   text-overflow: ellipsis;
   text-align: center;
@@ -125,7 +125,7 @@ h1 {
   font-size: 1rem;
   width: 10rem;
   border: none;
-  padding: 0.3rem;
+  padding: 0.5rem;
   animation: pulse-text 2s infinite;
   background-color: #46432f;
   text-align: center;
@@ -133,7 +133,7 @@ h1 {
 }
 
 .player-symbol {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   font-size: 1rem;
   color: #e1dec7;
 }
@@ -153,7 +153,7 @@ ol {
   background: none;
   color: #f8c031;
   border: none;
-  font-family: "Caprasimo", cursive;
+  font-family: 'Caprasimo', cursive;
   font-size: 4rem;
   text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
   animation: pulse-text-size 2s infinite ease-out;
@@ -179,21 +179,17 @@ ol {
 }
 
 #game-board button {
-  width: 6rem;
-  height: 6rem;
+  width: 8rem;
+  height: 8rem;
   border: none;
-  background-color: #d4ceaa;
+  background: #aca788;
   color: #3f3b00;
   font-size: 5rem;
   cursor: pointer;
-  font-family: "Caprasimo", cursive;
-  transition: background-color 0.3s;
+  font-family: 'Caprasimo', cursive;
+  padding: 1rem;
 }
 
-#game-board button:hover{
-  background-color: #fdce32;
-  }
-  
 #game-over {
   position: absolute;
   top: 0;
@@ -209,7 +205,7 @@ ol {
 }
 
 #game-over h2 {
-  font-family: "Caprasimo", cursive;
+  font-family: 'Caprasimo', cursive;
   font-size: 4rem;
   text-align: center;
   color: #fcd256;
@@ -269,7 +265,7 @@ ol {
 }
 
 #game-hints h2 {
-  font-family: "Caprasimo", cursive;
+  font-family: 'Caprasimo', cursive;
   font-size: 2rem;
   margin: 0;
 }

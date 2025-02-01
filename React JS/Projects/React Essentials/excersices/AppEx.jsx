@@ -1,22 +1,22 @@
-import Button from './Button.jsx';
-import { HomeIcon , PlusIcon } from './Icon.jsx';
+import Button from "./Button.jsx";
+import { HomeIcon, PlusIcon } from "./Icon.jsx";
 
-function AppEx() {
+export default function AppEx() {
   return (
-     <div id="app">
+    <div id="app">
       <section>
         <h2>Filled Button (Default)</h2>
         <p>
           <Button>Default</Button>
         </p>
         <p>
-          <Button mode="Filled" >Filled (Default)</Button>
+          <Button mode="Filled">Filled (Default)</Button>
         </p>
       </section>
       <section>
         <h2>Button with Outline</h2>
         <p>
-          <Button mode="outline" >Outline</Button>
+          <Button mode="outline">Outline</Button>
         </p>
       </section>
       <section>
@@ -44,11 +44,9 @@ function AppEx() {
           </Button>
         </p>
         <p>
-          <Button onClick={() => console.log('Clicked!')}>Click me</Button>
+          <Button onClick={() => console.log("Clicked!")}>Click me</Button>
         </p>
       </section>
     </div>
   );
 }
-
-export default AppEx;

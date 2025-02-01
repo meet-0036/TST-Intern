@@ -1,4 +1,4 @@
-export default function Tabs({ children, buttons, ButtonContainer = 'menu' }) {      // assign component identifier <menu> tag to Tabs also pass <div>,<ul>,{Section}
+export default function Tabs({ children, buttons, ButtonContainer = "menu" }) {
   return (
     <>
       <ButtonContainer>{buttons}</ButtonContainer>
@@ -6,3 +6,6 @@ export default function Tabs({ children, buttons, ButtonContainer = 'menu' }) { 
     </>
   );
 }
+
+// Use for set proper wrapper element(dynamic)
+// assign component identifier as <menu> tag to Tabs also pass <div>,<ul>,{Section}
