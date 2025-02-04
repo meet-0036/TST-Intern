@@ -8,3 +8,5 @@ export default function Button({ children, ...props }) {
     </button>
   );
 }
+
+// on Other state : hover:cssClass

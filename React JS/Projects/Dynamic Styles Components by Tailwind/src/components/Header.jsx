@@ -1,5 +1,7 @@
 import logo from "../assets/logo.png";
 
+// add built in className from Tailwind
+
 export default function Header() {
   return (
     <header className="flex flex-col items-center mt-8 mb-8 md:mb-16">
@@ -15,3 +17,5 @@ export default function Header() {
     </header>
   );
 }
+
+//  Add mediaQuery using mb-8 md:mb-16 (mb-8:default [mid display]:cssClass)

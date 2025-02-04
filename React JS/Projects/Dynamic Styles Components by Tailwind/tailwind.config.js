@@ -4,9 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        title: ['"Pacifico"', 'cursive']
+        title: ['"Pacifico"', "cursive"],
       },
     },
     plugins: [],
   },
 };
+
+// add fontFamily: external(google Fonts) fonts add as ["'___'"]
