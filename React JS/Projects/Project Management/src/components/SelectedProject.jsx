@@ -1,16 +1,16 @@
-import Tasks from './Tasks.jsx';
+import Tasks from "./Tasks.jsx";
 
 export default function SelectedProject({
   project,
   onDelete,
   onAddTask,
   onDeleteTask,
-  tasks
+  tasks,
 }) {
-  const formattedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const formattedDate = new Date(project.dueDate).toLocaleDateString("en-us", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 
   return (

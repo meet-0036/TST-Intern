@@ -1,7 +1,7 @@
-import { useRef } from 'react';
+import { useRef } from "react";
 
-import Input from './Input.jsx';
-import Modal from './Modal.jsx';
+import Input from "./Input.jsx";
+import Modal from "./Modal.jsx";
 
 export default function NewProject({ onAdd, onCancel }) {
   const modal = useRef();
@@ -15,10 +15,11 @@ export default function NewProject({ onAdd, onCancel }) {
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
 
+    // Validations...
     if (
-      enteredTitle.trim() === '' ||
-      enteredDescription.trim() === '' ||
-      enteredDueDate.trim() === ''
+      enteredTitle.trim() === "" ||
+      enteredDescription.trim() === "" ||
+      enteredDueDate.trim() === ""
     ) {
       modal.current.open();
       return;
