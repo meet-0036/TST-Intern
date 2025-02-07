@@ -8,7 +8,14 @@ import SelectedProject from "./components/SelectedProject.jsx";
 function App() {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined, // When Nothing
-    projects: [],
+    projects: [
+      {
+        description: "as",
+        dueDate: "0002-02-01",
+        id: 1738905973293,
+        title: "a",
+      },
+    ],
     tasks: [],
   });
 
@@ -79,6 +86,7 @@ function App() {
         projects: [...prevState.projects, newProject],
       };
     });
+    console.log(projectsState);
   }
 
   function handleDeleteProject() {
