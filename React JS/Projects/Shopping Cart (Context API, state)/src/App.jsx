@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Header from './components/Header.jsx';
-import Shop from './components/Shop.jsx';
-import Product from './components/Product.jsx';
-import { DUMMY_PRODUCTS } from './dummy-products.js';
-import { CartContext } from './store/shopping-cart-context.jsx';
+import Header from "./components/Header.jsx";
+import Shop from "./components/Shop.jsx";
+import Product from "./components/Product.jsx";
+import { DUMMY_PRODUCTS } from "./dummy-products.js";
+import { CartContext } from "./store/shopping-cart-context.jsx";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
@@ -67,21 +67,22 @@ function App() {
     });
   }
 
+  //add state in Context
+  // default value need to pass in Context
   const ctxValue = {
     items: shoppingCart.items,
-    addItemToCart: handleAddItemToCart
+    addItemToCart: handleAddItemToCart, // Forward handling function through global context
+    updateCartItemQuantity: handleUpdateCartItemQuantity,
   };
 
   return (
+    // <CartContext.Provider value={shoppingCart}>  // also this way link with the state
     <CartContext.Provider value={ctxValue}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+      <Header />
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
@@ -90,3 +91,28 @@ function App() {
 }
 
 export default App;
+
+// what happens when context value is changed : React will re-execute child that subscribes to context when any of the state in that context is changed.
+
+// Context.Provider - This component provides the context value to its children components.
+// It allows components to access the shopping cart state and the `handleAddItemToCart` function.
+
+// or
+
+/*
+// Context.Consumer : also use as Provider but not healthly for default use
+<CartContext.Consumer>
+  {(context) => (       // this fun receives automatic context value
+    <div>
+      <h2>Shopping Cart</h2>
+      <ul>
+        {context.items.map((item) => (
+          <li key={item.id}>
+            {item.name} - {item.quantity} x ${item.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</CartContext.Consumer>
+*/

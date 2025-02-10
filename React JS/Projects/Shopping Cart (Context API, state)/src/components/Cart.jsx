@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import { CartContext } from '../store/shopping-cart-context.jsx';
+import { CartContext } from "../store/shopping-cart-context.jsx";
 
-export default function Cart({ onUpdateItemQuantity }) {
-  const { items } = useContext(CartContext);
+export default function Cart() {
+  const { items, updateCartItemQuantity } = useContext(CartContext);
 
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -26,11 +26,11 @@ export default function Cart({ onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateCartItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateCartItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>
@@ -45,3 +45,12 @@ export default function Cart({ onUpdateItemQuantity }) {
     </div>
   );
 }
+
+// useContext() :  hook is used to access the value of a context directly in a functional component.
+// Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+
+/*
+1. Creating Context: First, you need to create a context using React.createContext().
+2. Providing Context: Use a Provider component to pass the context value to the component tree.
+3. Consuming Context: Use the useContext hook to access the context value in any functional component.
+*/
