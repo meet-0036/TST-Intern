@@ -132,7 +132,6 @@ export default function CartContextProvider({ children }) {
 
 // Ex of UseReducer() :
 /*
-
 import React from 'react';
 export function counterReducer(state, action) {
         if(action.type === 'INCREMENT') {
@@ -162,7 +161,4 @@ function App() {
 }
 
 export default App;
-
-
-
 */
