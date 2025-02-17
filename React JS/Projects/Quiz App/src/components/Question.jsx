@@ -32,6 +32,7 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
         isCorrect: QUESTIONS[index].answers[0] === answer,
       });
 
+      // add selectedAnswer in userAnswers Array.
       setTimeout(() => {
         onSelectAnswer(answer);
       }, 2000);
