@@ -1,37 +1,39 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Counter from './components/Counter/Counter.jsx';
-import Header from './components/Header.jsx';
-import { log } from './log.js';
+import Counter from "./components/Counter/Counter.jsx";
+import Header from "./components/Header.jsx";
+import { log } from "./log.js";
+import ConfigureCounter from "./components/Counter/ConfigureCounter.jsx";
 
 function App() {
-  log('<App /> rendered');
+  log("<App /> rendered");
 
-  const [enteredNumber, setEnteredNumber] = useState(0);
   const [chosenCount, setChosenCount] = useState(0);
 
-  function handleChange(event) {
-    setEnteredNumber(+event.target.value);
-  }
-
-  function handleSetClick() {
-    setChosenCount(enteredNumber);
-    setEnteredNumber(0);
+  function handleSetCount(newCount) {
+    // setChosenCount(newCount);
+    // console.log(newCount);   // won't work!
+    setChosenCount((prevCount) => (prevCount = newCount));
   }
 
   return (
     <>
       <Header />
       <main>
-        <section id="configure-counter">
-          <h2>Set Counter</h2>
-          <input type="number" onChange={handleChange} value={enteredNumber} />
-          <button onClick={handleSetClick}>Set</button>
-        </section>
-        <Counter initialCount={chosenCount} />
+        <ConfigureCounter onSet={handleSetCount} />
+        <Counter key={chosenCount} initialCount={chosenCount} />
+
+        {/* When use same state on other child (state is different for every Child) */}
+        {/* <Counter initialCount={0} /> */}
       </main>
     </>
   );
 }
 
 export default App;
+
+// This situation is causes with state.
+// When state changes, React schedules a new execution (like i++ for the component's next execution).
+// Solution: We try to update using a function, which guarantees that the state is up-to-date.
+
+// Million Js Package : Also use optimize the performance of your React applications.
