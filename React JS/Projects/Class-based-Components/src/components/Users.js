@@ -3,12 +3,13 @@ import { Component } from "react";
 import User from "./User";
 import classes from "./Users.module.css";
 
+// Class Components
 class Users extends Component {
   // Define state using constructor
   constructor() {
     super(); // access parent class
 
-    // this state(built-in) always only object.
+    // this state(built-in Word) : always only object.
     this.state = {
       showUsers: true,
       more: "Test",
@@ -18,7 +19,7 @@ class Users extends Component {
   toggleUsersHandler() {
     // this.state.showUsers = false; // NOT!
 
-    // Special method for state update, it only change selected value.
+    // Special methdo for state update, it only change selected value.
     this.setState((curState) => {
       return { showUsers: !curState.showUsers };
     });
