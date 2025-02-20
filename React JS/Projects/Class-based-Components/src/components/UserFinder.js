@@ -2,14 +2,12 @@ import { Fragment, useState, useEffect, Component } from "react";
 
 import Users from "./Users";
 import classes from "./UserFinder.module.css";
-
-const DUMMY_USERS = [
-  { id: "u1", name: "Max" },
-  { id: "u2", name: "Manuel" },
-  { id: "u3", name: "Julie" },
-];
+import UsersContext from "../store/users-context";
 
 class UserFinder extends Component {
+  // static type assign contextType only once[so one context component]
+  static contextType = UsersContext;
+
   // define State
   constructor() {
     super();
@@ -19,13 +17,14 @@ class UserFinder extends Component {
     };
   }
 
-  // Suppose to fetch dat, this execute once.
+  // Suppose to fetch data, this execute once.
   componentDidMount() {
     // Send http request...
-    this.setState({ filteredUsers: DUMMY_USERS });
+    this.setState({ filteredUsers: this.context.users }); // use context value
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // Check if prevState is different from the current state to avoid an infinite loop
     if (prevState.searchTerm !== this.state.searchTerm) {
       // set state
       this.setState({
@@ -77,3 +76,7 @@ class UserFinder extends Component {
 // };
 
 export default UserFinder;
+
+// Way to access context in class component
+// 1. use userContext.consumer to get the value of the context.
+// 2.
