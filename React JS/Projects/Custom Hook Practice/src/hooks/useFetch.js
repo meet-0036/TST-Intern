@@ -25,7 +25,7 @@ export function useFetch(fetchFn, initialValue) {
   return {
     isFetching,
     fetchedData,
-    setFetchedData,
+    setFetchedData, // We also handle state outside of the hook
     error,
   };
 }
