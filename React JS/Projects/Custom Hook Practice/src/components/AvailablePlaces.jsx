@@ -1,12 +1,13 @@
-import Places from './Places.jsx';
-import Error from './Error.jsx';
-import { sortPlacesByDistance } from '../loc.js';
-import { fetchAvailablePlaces } from '../http.js';
-import { useFetch } from '../hooks/useFetch.js';
+import Places from "./Places.jsx";
+import Error from "./Error.jsx";
+import { sortPlacesByDistance } from "../loc.js";
+import { fetchAvailablePlaces } from "../http.js";
+import { useFetch } from "../hooks/useFetch.js";
 
 async function fetchSortedPlaces() {
   const places = await fetchAvailablePlaces();
 
+  // Promisify the geolocation API
   return new Promise((resolve) => {
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
@@ -21,6 +22,7 @@ async function fetchSortedPlaces() {
 }
 
 export default function AvailablePlaces({ onSelectPlace }) {
+  // Use multiple hooks to fetch and sort places
   const {
     isFetching,
     error,
