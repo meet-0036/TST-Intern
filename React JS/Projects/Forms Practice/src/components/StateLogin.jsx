@@ -10,12 +10,31 @@ export default function Login() {
     password: "",
   });
 
+  // 1) Handle earlier preventing error
+  const [didEdit, setDidEdit] = useState({
+    email: false,
+    password: false,
+  });
+
   function handleSubmit(event) {
     // Prevent the default behavior of the form to avoid a page reload
     event.preventDefault();
     // console.log(event);
     console.log(enteredValues);
+
+    // Clear the form(Reset)
+    setEnteredValues({
+      email: "",
+      password: "",
+    });
   }
+
+  //  1) Prevent early error
+  const emailIsInvalid =
+    enteredValues.email !== "" && !enteredValues.email.includes("@");
+
+  // Set validate at losing focus
+  // const emailIsInvalid = didEdit.email && !enteredValues.email.includes("@");
 
   // When handle multiple input by same state,need to provide identifier.
   function handleInputChange(identifier, value) {
@@ -23,6 +42,9 @@ export default function Login() {
       ...prevValues,
       [identifier]: value,
     }));
+
+    //
+    setDidEdit((prevEdit) => ({ ...prevEdit, [identifier]: false }));
   }
   // ({ entries }) : Js says to treat it as an object.
 
@@ -33,6 +55,13 @@ export default function Login() {
   // function handlePasswordChange(event) {
   //   setEnteredPassword(event.target.value);
   // }
+
+  function handleInputBlur(identifier) {
+    setDidEdit((prevEdit) => ({
+      ...prevEdit,
+      [identifier]: true,
+    }));
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,9 +74,13 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
+            onBlur={() => handleInputBlur("email")}
             onChange={(event) => handleInputChange("email", event.target.value)}
             value={enteredValues.email}
           />
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter a valid email address.</p>}
+          </div>
         </div>
 
         <div className="control no-margin">

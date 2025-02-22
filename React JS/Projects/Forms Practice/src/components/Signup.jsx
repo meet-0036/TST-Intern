@@ -3,12 +3,14 @@ export default function Signup() {
     // Handle automatic sends HTTP request
     event.preventDefault();
 
-    // This function constructed by the Browser
     const fd = new FormData(event.target);
-    const acquisitionChannel = fd.getAll("acquisition");
+    const acquisitionChannel = fd.getAll("acquisition"); // Take manually
     const data = Object.fromEntries(fd.entries());
     data.acquisition = acquisitionChannel;
     console.log(data);
+
+    // Clear the form(Reset)
+    event.target.reset(); // Gives functionality using type="reset" button
   }
 
   return (
