@@ -3,6 +3,7 @@ import RLogin from "./components/RefLogin.jsx";
 import SLogin from "./components/StateLogin.jsx";
 import CustomSLogin from "./components/CustomStateLogin.jsx";
 import Signup from "./components/Signup.jsx";
+import ActionSignup from "./components/ActionSignup.jsx";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <main>
         {/* <RLogin /> */}
         {/* <SLogin /> */}
-        <CustomSLogin />
+        {/* <CustomSLogin /> */}
         {/* <Signup /> */}
+        <ActionSignup />
       </main>
     </>
   );

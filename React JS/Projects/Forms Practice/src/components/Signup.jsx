@@ -24,6 +24,7 @@ export default function Signup() {
     event.target.reset(); // Gives functionality using type="reset" button
   }
 
+  // form onSubmit is use in every React version, but when v.19+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Welcome on board!</h2>
