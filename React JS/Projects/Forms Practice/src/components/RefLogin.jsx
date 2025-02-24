@@ -1,4 +1,4 @@
-import { useState, seRef } from "react";
+import { useState, useRef } from "react";
 
 export default function Login() {
   const [emailIsInvalid, setEmailIsInvalid] = useState(false);
@@ -12,24 +12,25 @@ export default function Login() {
     const enteredEmail = email.current.value;
     const enteredPassword = password.current.value;
 
-    console.log("email : ", enteredEmail, "\npassword :", enteredPassword);
-
-    // Clear the form[Not recommended]
-    email.current.value = "";
-    password.current.value = "";
-
     const emailIsValid = enteredEmail.includes("@");
 
-    if (!emailIsValid) {
+    if (!emailIsValid || enteredPassword === "") {
       setEmailIsInvalid(true);
 
-      // use return if email is invalid, It handle can't send HTTP request.
+      // use return if email is invalid or password is blank, It handle can't send HTTP request.
       return;
+    } else {
+      setEmailIsInvalid(false);
+
+      console.log("Email :", enteredEmail);
+      console.log("Password :", enteredPassword);
+
+      console.log("Sending HTTP request...");
+
+      // Clear the form[Not recommended]
+      email.current.value = "";
+      password.current.value = "";
     }
-
-    setEmailIsInvalid(false);
-
-    console.log("Sending HTTP request...");
   }
 
   return (
