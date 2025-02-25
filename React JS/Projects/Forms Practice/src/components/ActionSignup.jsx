@@ -3,10 +3,11 @@ import { useActionState } from "react";
 import {
   isEmail,
   isNotEmpty,
-  isEqualToOtherValue,
+  isEqualsToOtherValue,
   hasMinLength,
 } from "../util/validation";
 
+// If you not use any Signup(prop) props, then it put outside the component
 function signupAction(prevFormState, formData) {
   const email = formData.get("email");
   const password = formData.get("password");
@@ -28,7 +29,7 @@ function signupAction(prevFormState, formData) {
     errors.push("You must provide a password with at least six characters.");
   }
 
-  if (!isEqualToOtherValue(password, confirmPassword)) {
+  if (!isEqualsToOtherValue(password, confirmPassword)) {
     errors.push("Passwords do not match.");
   }
 
@@ -68,6 +69,7 @@ function signupAction(prevFormState, formData) {
 }
 
 export default function Signup() {
+  // when pass function in Hook, it different behaviour signupAction(prevState, formData)
   const [formState, formAction] = useActionState(signupAction, {
     errors: null,
   });
@@ -203,7 +205,7 @@ export default function Signup() {
       </div>
 
       {formState.errors && (
-        <ul className="error">
+        <ul className="control-error">
           {formState.errors.map((error) => (
             <li key={error}>{error}</li>
           ))}
@@ -220,4 +222,7 @@ export default function Signup() {
   );
 }
 
+// const [state, formAction, isPending] = useActionState(fn, initialState, permalink?);
+// Update state based on the result of a form action.
 // This way can't handle efficiently
+// If we try to reset form, it set default Value(Not worth).
