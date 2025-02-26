@@ -5,12 +5,20 @@ import { OpinionsContext } from "../store/opinions-context.jsx";
 export function Opinion({ opinion: { id, title, body, userName, votes } }) {
   const { upvoteOpinion, downvoteOpinion } = use(OpinionsContext);
 
+  // For temp. votes value
+  const [optimisticVotes, setVotesOptimistically] = useOptimistic(
+    votes,
+    (prevVotes, mode) => (mode === "up" ? prevVotes + 1 : prevVotes - 1)
+  );
+
   // Multiple form actions
   async function upvoteAction() {
+    setVotesOptimistically("up");
     await upvoteOpinion(id);
     console.log("UPVOTE");
   }
   async function downvoteAction() {
+    setVotesOptimistically("down");
     await downvoteOpinion(id);
     console.log("DOWNVOTE");
   }
@@ -50,7 +58,7 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
           </svg>
         </button>
 
-        <span>{votes}</span>
+        <span>{optimisticVotes}</span>
 
         <button
           formAction={downvoteFormAction}
