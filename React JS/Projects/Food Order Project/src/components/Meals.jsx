@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-import Meal from "./MealItem.jsx";
+import MealItem from "./MealItem.jsx";
+// import MealItem from "../util/";
 
 // don't try to convert component function as async.(not supported by react)
 export default function Meals() {
@@ -39,9 +40,7 @@ export default function Meals() {
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => (
-        <li key={meal.id}>
-          <Meal meal={meal}></Meal>
-        </li>
+        <MealItem key={meal.id} meal={meal}></MealItem>
       ))}
     </ul>
   );
