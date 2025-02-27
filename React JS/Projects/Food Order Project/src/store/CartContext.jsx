@@ -12,6 +12,8 @@ function cartReducer(state, action) {
       (item) => item.id === action.item.id
     );
 
+    console.log("Selected Id for add to cart : ", existingCartItemIndex);
+
     // Copy actual items array.
     const updatedItems = [...state.items];
 
@@ -34,6 +36,9 @@ function cartReducer(state, action) {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
     );
+
+    console.log("Id for remove item : ", existingCartItemIndex);
+
     const existingCartItem = state.items[existingCartItemIndex];
 
     const updatedItems = [...state.items];
@@ -70,8 +75,6 @@ export function CartContextProvider({ children }) {
     addItem,
     removeItem,
   };
-
-  console.log(cartContext);
 
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
