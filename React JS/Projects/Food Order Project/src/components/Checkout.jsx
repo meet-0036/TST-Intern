@@ -43,20 +43,6 @@ export default function Checkout() {
     clearData();
   }
 
-  // async function checkoutAction(fd) {
-  //   console.log(fd);
-  //   const customerData = Object.fromEntries(fd.entries()); // { email: test@example.com }
-
-  //   await sendRequest(
-  //     JSON.stringify({
-  //       order: {
-  //         items: cartCtx.items,
-  //         customer: customerData,
-  //       },
-  //     })
-  //   );
-  // }
-
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -109,7 +95,6 @@ export default function Checkout() {
 
   return (
     <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
-      {/* <form action={checkoutAction}> */}
       <form onSubmit={handleSubmit}>
         <h2>Checkout</h2>
         <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
@@ -129,5 +114,3 @@ export default function Checkout() {
     </Modal>
   );
 }
-
-//  <form onSubmit={handleSubmit}>
