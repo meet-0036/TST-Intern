@@ -1,11 +1,49 @@
 import { useState, useEffect } from "react";
 
 import MealItem from "./MealItem.jsx";
-// import MealItem from "../util/";
+import Error from "./Error.jsx";
+import useHttp from "../hooks/useHttp.js";
+
+const requestConfig = {};
 
 // don't try to convert component function as async.(not supported by react)
 export default function Meals() {
-  const [loadedMeals, setLoadedMeals] = useState([]);
+  const {
+    data: loadedMeals,
+    isLoading,
+    error,
+  } = useHttp("http://localhost:3000/meals", requestConfig, []);
+
+  if (isLoading) {
+    return <p className="center">Fetching meals...</p>;
+  }
+
+  if (error) {
+    return (
+      <Error
+        className="center"
+        title="Failed to fatch meals.."
+        message={error}
+      />
+    );
+  }
+
+  // if (!data) {
+  //   return <p>No meals found.</p>
+  // }
+
+  return (
+    <ul id="meals">
+      {loadedMeals.map((meal) => (
+        <MealItem key={meal.id} meal={meal}></MealItem>
+      ))}
+    </ul>
+  );
+}
+
+/*
+
+const [loadedMeals, setLoadedMeals] = useState([]);
 
   // fatching a data once.
   useEffect(() => {
@@ -26,6 +64,7 @@ export default function Meals() {
     fetchMeals();
   }, []);
 
+
   // fetchMeals();   // call outSide useEffect()-it prevents infinite loop
 
   // if any error in backend API.
@@ -37,11 +76,5 @@ export default function Meals() {
   //   );
   // }
 
-  return (
-    <ul id="meals">
-      {loadedMeals.map((meal) => (
-        <MealItem key={meal.id} meal={meal}></MealItem>
-      ))}
-    </ul>
-  );
-}
+
+*/

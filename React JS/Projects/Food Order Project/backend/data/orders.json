@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "items": [
+      {
+        "id": "m2",
+        "name": "Margherita Pizza",
+        "price": "12.99",
+        "description": "A classic pizza with fresh mozzarella, tomatoes, and basil on a thin and crispy crust.",
+        "image": "images/margherita-pizza.jpg",
+        "quantity": 4
+      }
+    ],
+    "customer": {
+      "name": "Meet ",
+      "email": "dfj@df.in",
+      "street": "Hey ",
+      "postal-code": "11212",
+      "city": "ss"
+    },
+    "id": "151.4835285157423"
+  }
+]
