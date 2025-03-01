@@ -1,21 +1,58 @@
-import { createStore } from 'redux';
+import { configureStore } from "@reduxjs/toolkit";
 
-const counterReducer = (state = { counter: 0 }, action) => {
-  if (action.type === 'increment') {
-    return {
-      counter: state.counter + 1,
-    };
-  }
+import counterReducer from "./counter";
+import authReducer from "./auth";
 
-  if (action.type === 'decrement') {
-    return {
-      counter: state.counter - 1,
-    };
-  }
-
-  return state;
-};
-
-const store = createStore(counterReducer);
+const store = configureStore({
+  reducer: { counter: counterReducer, auth: authReducer },
+});
 
 export default store;
+
+// import {createStore } from "@react-redux/toolkit"
+// const counterReducer = (state = initialCounterState, action) => {
+//   if (action.type === "increment") {
+//     return {
+//       ...state,
+//       counter: state.counter + 1,
+//     };
+//   }
+
+//   if (action.type === "decrement") {
+//     return {
+//       ...state,
+//       counter: state.counter - 1,
+//     };
+//   }
+
+//   if (action.type === "increase") {
+//     console.log(action);
+//     console.log(action.amount);
+//     return {
+//       ...state,
+//       counter: state.counter + action.amount,
+//     };
+//   }
+
+//   if (action.type === "toggle") {
+//     return {
+//       ...state,
+//       showCounter: !state.showCounter,
+//     };
+//   }
+
+//   // return unchanged state
+//   return state;
+// };
+
+// const store = createStore(counterReducer);
+
+// export default store;
+
+// npm install redux react-redux
+// counterReducer(prevState, action)
+
+// similar as combineReducers
+// configureStore - it able to configure multiple reducer/Slicer.
+
+// counterSlice.reducer - it takes automatically reducers atities.
