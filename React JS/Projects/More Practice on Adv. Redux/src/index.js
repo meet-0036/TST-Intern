@@ -12,4 +12,5 @@ root.render(
   </Provider>
 );
 
+// Provide store for all component in App
 //  npm install @reduxjs/toolkit
