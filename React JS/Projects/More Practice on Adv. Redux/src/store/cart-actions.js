@@ -13,13 +13,13 @@ export const fetchCartData = () => {
       }
 
       const data = await response.json();
-      console.log("data : ", data);
 
       return data;
     };
 
     try {
       const cartData = await fetchData();
+      console.log("data : ", cartData);
       dispatch(
         // when fetch first time we need to handle undefined on items array (default []).
         cartActions.replaceCart({
