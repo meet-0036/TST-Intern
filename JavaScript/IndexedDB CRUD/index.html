@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexedDB Tester</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- Scripts with defer always execute when the DOM is ready (but before DOMContentLoaded event).
+DOMContentLoaded event handler waits for the deferred script. It only triggers when the script is downloaded and executed. 
+
+Other scripts don’t wait for async scripts, and async scripts don’t wait for them.
+DOMContentLoaded and async scripts don’t wait for each other:
+DOMContentLoaded may happen both before an async script (if an async script finishes loading after the page is complete)
+…or after an async script (if an async script is short or was in HTTP-cache)
+-->
