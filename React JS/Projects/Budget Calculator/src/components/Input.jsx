@@ -1,13 +1,15 @@
-import { useContext } from "React";
+import { useContext, useRef } from "React";
 
 import { BalanceContext } from "../store/balance-context.jsx";
 
 export default function Input() {
   const { addMovement } = useContext(BalanceContext);
 
+  const symbol = useRef("+");
+
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     const formData = new FormData(e.target);
 
     const type = formData.get("type");
@@ -27,6 +29,7 @@ export default function Input() {
       >
         <select
           name="type"
+          ref={symbol}
           id="select_sign"
           className="w-20 p-2 h-14 text-2xl border border-gray-200"
         >
@@ -47,6 +50,8 @@ export default function Input() {
         />
         <button className="w-10 h-10 flex items-center justify-center ">
           <img
+          // handle image loading according select option
+            // src={symbol.current.option === "+" ? "/greenBtn.svg" : "/redBtn.svg"}
             src="/greenBtn.svg"
             alt="Submit Button"
             className="w-full h-full object-cover"
