@@ -5,8 +5,8 @@ import MainNavigation from '../components/MainNavigation';
 
 function RootLayout() {
 
-  // 1. way of handle loading Status
-  // navigation.state with idle , loading , submitting
+  // 1. way of handle loading Status ( Current navigation state of UI)
+  // navigation.state is idle , loading , submitting
   // const navigation = useNavigation();
 
   return (
