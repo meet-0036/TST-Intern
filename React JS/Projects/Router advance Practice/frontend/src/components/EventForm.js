@@ -11,7 +11,7 @@ import classes from "./styles/EventForm.module.css";
 function EventForm({ method, event }) {
   const data = useActionData();
   const navigate = useNavigate();
-  const navigation = useNavigation();
+  const navigation = useNavigation(); // for get state of navigation
 
   // hadle loading state
   const isSubmitting = navigation.state === "submitting";

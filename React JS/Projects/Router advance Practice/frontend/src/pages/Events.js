@@ -18,6 +18,10 @@ function EventsPage() {
   
   // For set loading state
   return (
+
+    // When reeturn direct res.
+    // <EventsList events={data.events} />
+
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={events}>
         {(loadedEvents) => <EventsList events={loadedEvents} />}
@@ -90,6 +94,8 @@ export async function loader() {
 // loader : Can wait for fetching data completed then render component
 
 // Response.json(data, options) - sending response
+
+
 
 // Fetching Logic
 // import { useEffect, useState } from 'react';
