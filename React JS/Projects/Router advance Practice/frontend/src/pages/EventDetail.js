@@ -82,9 +82,9 @@ export async function loader({ request, params }) {
   const id = params.eventId;
 
   return {
-    // handle both events for parallel process 
+    // handle both events for parallel process(Load equal)
     event: await loadEvent(id),
-    events: loadEvents(),
+    events:  loadEvents(),
   };
 }
 
