@@ -1,32 +1,12 @@
 {
   "events": [
     {
-      "title": "Annual Party",
-      "image": "https://img.freepik.com/free-photo/excited-audienc…un-music-festival-night-copy-space_637285-559.jpg",
-      "date": "2025-03-30",
-      "description": "On this day, we have complete 50th year of our college. We have create a large infrastructure with capable education.",
-      "id": "4db4faac-7a92-49cb-bf72-bdd1936145e3"
-    },
-    {
-      "title": "Disco Party",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyvetnLOz5AF4JPJGxqw0EJpwpBHl9swwqww&s",
-      "date": "2025-03-28",
-      "description": "let's create mood on for party with girls, and enjoy this nights with foregion wines.",
-      "id": "e46bb33f-1205-45e0-a5eb-8424fe851d5b"
-    },
-    {
-      "title": "Let's enjoy in Holi",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSExEfV3oUo6r6SaC-vHJx-F9dkuqJ352G4g&s",
-      "date": "2025-03-14",
-      "description": "In This holi we are cellibrating our 10 year completion in IT consultant.",
-      "id": "11b944a9-30aa-4f70-acd4-4327d7fb0982"
-    },
-    {
-      "title": "A first event",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "date": "2023-02-22",
-      "description": "Join this amazing event and connect with fellow developers.",
-      "id": "e1"
+      "title": "A new event",
+      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
+      "date": "2022-10-01",
+      "description": "Some awesome event!",
+      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
     }
-  ]
+  ],
+  "users": []
 }

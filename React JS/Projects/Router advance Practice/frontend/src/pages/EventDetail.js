@@ -1,11 +1,12 @@
-import { Suspense } from "react";
+// import { Suspense } from "react";
 
 // import { useParams } from 'react-router-dom';
 // import { useLoaderData } from "react-router-dom";
-import { useRouteLoaderData, redirect, Await } from "react-router-dom";
+import { useRouteLoaderData, redirect } from "react-router-dom";
+// import {  Await } from "react-router-dom";
 
 import EventItem from "../components/EventItem.js";
-import EventsList from "../components/EventsList.js";
+// import EventsList from "../components/EventsList.js";
 
 function EventDetailPage() {
   // const params = useParams();  // useLoaderData
@@ -13,19 +14,19 @@ function EventDetailPage() {
   // const data = useLoaderData(); // when fetching own loader
 
   // use parent loader using key.
-  // const data = useRouteLoaderData("event-detail");  
+  const data = useRouteLoaderData("event-detail");  
 
   // check defer for wait multiple loads.
-  const { event, events } = useRouteLoaderData('event-detail');
+  // const { event, events } = useRouteLoaderData('event-detail');
 
   return (
     <>
     
-      {/* <EventItem event={data.event} /> */}
+      <EventItem event={data.event} />
 
       {/* Defer testing - load multiple fetches */}
 
-      <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
+      {/* <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
         <Await resolve={event}>
           {(loadedEvent) => <EventItem event={loadedEvent} />}
         </Await>
@@ -34,14 +35,14 @@ function EventDetailPage() {
         <Await resolve={events}>
           {(loadedEvents) => <EventsList events={loadedEvents} />}
         </Await>
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
 
 export default EventDetailPage;
 
-// Defer testing
+/* // Defer testing
 async function loadEvent(id) {
   const response = await fetch('http://localhost:8989/events/' + id);
 
@@ -88,8 +89,9 @@ export async function loader({ request, params }) {
   };
 }
 
+*/
 
-/*
+
 
 export async function loader({ request, params }) {
   // when fetch other url data by "request"
@@ -108,9 +110,6 @@ export async function loader({ request, params }) {
     return response;
   }
 }
-
-*/
-
 
 export async function action({ params, request }) {
   const eventId = params.eventId;
