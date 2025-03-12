@@ -11,6 +11,7 @@
 
 .item a {
   text-decoration: none;
+  max-width: 40rem;
   color: inherit;
   display: flex;
   background-color: var(--color-gray-800);

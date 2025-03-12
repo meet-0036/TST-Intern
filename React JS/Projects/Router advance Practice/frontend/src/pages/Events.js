@@ -1,28 +1,65 @@
-import { useLoaderData,json } from "react-router-dom";
-// json is deprecated after v7+
+import { Suspense } from "react";
+import { useLoaderData, json, defer, Await } from "react-router-dom";
+// Explore json,defer is deprecated after v7+
 
 import EventsList from "../components/EventsList";
 
 function EventsPage() {
-  // backend not work properly ...
-  const data = useLoaderData();
+  // backend not work properly ... (When not use defer)
+  // const data = useLoaderData();
 
   // for 2 way of error handling
   // if (data.isError) {
   //   return <p>{data.message}</p>;
   // }
-  const events = data.events;
 
+  // for defer
+  const { events } = useLoaderData();
+  
+  // For set loading state
   return (
-    <>
-      <EventsList events={events} />
-    </>
+    <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents} />}
+      </Await>
+    </Suspense>
   );
 }
 
 export default EventsPage;
 
+// Both function use when check "defer()"
+async function loadEvents() {
+  const response = await fetch("http://localhost:8989/events");
+
+  if (!response.ok) {
+    throw Response.json(
+      { message: "Could not fetch events." },
+      { status: 500 }
+    );
+  } else {
+    const resData = await response.json();
+    return resData.events;
+  }
+}
+
+export function loader() {
+
+  // defer - deprecate this syntax
+  // return defer({
+  //   events: loadEvents(),
+  // });
+
+  // use new syntax
+  return {
+    events: loadEvents(),
+  }
+}
+
+/*
+
 // can't handle hooks or states bcz it's not component.
+// Solve by loader 
 export async function loader() {
   const response = await fetch("http://localhost:8989/events");
 
@@ -45,8 +82,10 @@ export async function loader() {
 
     // for handling Error and status
     return response;
+
   }
 }
+  */
 
 // loader : Can wait for fetching data completed then render component
 
