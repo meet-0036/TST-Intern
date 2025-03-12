@@ -6,7 +6,7 @@ import {
   redirect,
 } from "react-router-dom";
 
-import classes from "./EventForm.module.css";
+import classes from "./styles/EventForm.module.css";
 
 function EventForm({ method, event }) {
   const data = useActionData();
