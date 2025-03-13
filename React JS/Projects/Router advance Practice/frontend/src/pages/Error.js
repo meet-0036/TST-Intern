@@ -2,7 +2,7 @@
 import { useRouteError } from "react-router-dom";
 
 import PageContent from "../components/PageContent.js";
-import MainNavigation from "../components/MainNavigation";
+// import MainNavigation from "../components/MainNavigation";
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -19,6 +19,9 @@ export default function ErrorPage() {
     message = error.data.message;
   }
 
+  if (error.status === 422) {
+    message = "Entered value is incorrect!";
+  }
   if (error.status === 404) {
     title = "Not Fould!";
     message = "Could not find resources or Page!";
@@ -26,7 +29,7 @@ export default function ErrorPage() {
 
   return (
     <>
-      <MainNavigation />
+      {/* <MainNavigation /> */}
       <PageContent title={title}>
         <p>{message}</p>
       </PageContent>

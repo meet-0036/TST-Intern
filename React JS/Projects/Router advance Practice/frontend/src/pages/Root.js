@@ -1,18 +1,36 @@
-import { Outlet } from 'react-router-dom';
-// import { useNavigation } from 'react-router-dom';
+import { useEffect } from "react";
+import { Outlet, useLoaderData, useSubmit } from "react-router-dom";
 
-import MainNavigation from '../components/MainNavigation';
+import MainNavigation from "../components/MainNavigation";
+import { getTokenDuration } from '../util/auth';
 
 function RootLayout() {
+  const token = useLoaderData();
+  const submit = useSubmit();
 
-  // 1. way of handle loading Status ( Current navigation state of UI)
-  // navigation.state is idle , loading , submitting
-  // const navigation = useNavigation();
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    if (token === "EXPIRED") {
+      submit(null, { action: "/logout", method: "post" });
+      return;
+    }
+
+    const tokenDuration = getTokenDuration();
+    console.log(tokenDuration);
+
+    setTimeout(() => {
+      submit(null, { action: "/logout", method: "post" });
+    }, tokenDuration);
+  }, [token, submit]);
 
   return (
     <>
       <MainNavigation />
       <main>
+        {/* By useNAvigation */}
         {/* {navigation.state === "loading" && <p>Loading... Rootl</p>} */}
         <Outlet />
       </main>

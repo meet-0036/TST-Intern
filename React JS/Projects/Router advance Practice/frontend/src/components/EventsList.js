@@ -1,12 +1,11 @@
 // import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import classes from './styles/EventsList.module.css';
+import classes from "./styles/EventsList.module.css";
 
 function EventsList({ events }) {
-
   // we can fetch loader at same or child component(Not on higher/Upper)
-// const events = useLoaderData();
+  // const events = useLoaderData();
 
   return (
     <div className={classes.events}>
@@ -14,10 +13,9 @@ function EventsList({ events }) {
       <ul className={classes.list}>
         {events.map((event) => (
           <li key={event.id} className={classes.item}>
-            {/* <Link to={event.id}> */}
-
-            {/* When render in same page for defer testing */}
-            <Link to={`/events/${event.id}`}>
+            <Link to={event.id}>
+              {/* When render in same page for defer testing */}
+              {/* <Link to={`/events/${event.id}`}> */}
               <img src={event.image} alt={event.title} />
               <div className={classes.content}>
                 <h2>{event.title}</h2>

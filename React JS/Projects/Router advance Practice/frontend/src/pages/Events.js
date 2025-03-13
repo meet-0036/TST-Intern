@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import { useLoaderData, json, defer, Await } from "react-router-dom";
+import { useLoaderData, Await } from "react-router-dom";
+// import { json, defer } from "react-router-dom";
 // Explore json,defer is deprecated after v7+
 
 import EventsList from "../components/EventsList";
