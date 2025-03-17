@@ -6,9 +6,13 @@ import EventItem from './EventItem.jsx';
 import { fetchEvents } from '../../util/http.js';
 
 export default function NewEventsSection() {
+
+  // useQuery is custom Hook
   const { data, isPending, isError, error } = useQuery({
     queryKey: ['events'],
     queryFn: fetchEvents,
+    staleTime: 0, // (re-fetch duration) 0 - every time also check with actual backend data.
+    // gcTime: 10000, // default 5min (spends this after this time delete cache & re-fetch)
   });
 
   let content;
