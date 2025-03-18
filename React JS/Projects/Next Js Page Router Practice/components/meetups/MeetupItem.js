@@ -7,6 +7,7 @@ function MeetupItem(props) {
   const router = useRouter();
 
   function showDetailsHandler() {
+    // navigating using params
     router.push('/' + props.id);
   }
 
