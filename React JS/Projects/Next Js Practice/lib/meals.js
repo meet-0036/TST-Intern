@@ -52,3 +52,6 @@ export async function saveMeal(meal) {
     )
   `).run(meal);
 }
+
+// if error when fetch new image from server after build.
+// bcz nextjs take public as static folder.
