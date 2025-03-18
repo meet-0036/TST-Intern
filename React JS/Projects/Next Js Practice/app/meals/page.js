@@ -15,8 +15,6 @@ export default function MealsPage() {
   return (
     <>
       <header className={classes.header}>
-
-        <h1>this is demo dklfj lo=iner jfjaga;kljsdkl j</h1>
         <h1>
           Delicious meals, created{' '}
           <span className={classes.highlight}>by you</span>

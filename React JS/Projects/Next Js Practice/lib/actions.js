@@ -34,5 +34,9 @@ export async function shareMeal(prevState, formData) {
   }
 
   await saveMeal(meal);
+
+  // update cache via revalidations on the /meals page
+  // revalidatePath('/meals', 'layout'); // layout - revalidate nested paths
+  revalidatePath('/meals');
   redirect('/meals');
 }
