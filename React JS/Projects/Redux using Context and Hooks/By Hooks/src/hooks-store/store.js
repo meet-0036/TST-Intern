@@ -5,6 +5,8 @@ let listeners = [];
 let actions = {};
 
 export const useStore = (shouldListen = true) => {
+
+  // take only second args of useState
   const setState = useState(globalState)[1];
 
   const dispatch = (actionIdentifier, payload) => {

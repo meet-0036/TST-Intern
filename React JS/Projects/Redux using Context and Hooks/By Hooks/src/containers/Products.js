@@ -5,7 +5,10 @@ import { useStore } from '../hooks-store/store';
 import './Products.css';
 
 const Products = props => {
+
+  // get all products from store via state.
   const state = useStore()[0];
+  
   return (
     <ul className="products-list">
       {state.products.map(prod => (

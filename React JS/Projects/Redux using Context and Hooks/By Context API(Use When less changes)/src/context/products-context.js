@@ -5,7 +5,7 @@ export const ProductsContext = React.createContext({
   toggleFav: (id) => {}
 });
 
-export default props => {
+const ProductsProvider = (props) =>  {
   const [productsList, setProductsList] = useState([
     {
       id: 'p1',
@@ -42,6 +42,7 @@ export default props => {
         ...currentProdList[prodIndex],
         isFavorite: newFavStatus
       };
+       
       return updatedProducts;
     });
   };
@@ -54,3 +55,4 @@ export default props => {
     </ProductsContext.Provider>
   );
 };
+export default ProductsProvider;

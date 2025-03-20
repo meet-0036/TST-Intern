@@ -6,6 +6,8 @@ import './ProductItem.css';
 
 const ProductItem = React.memo(props => {
   console.log('RENDERING');
+
+  // only take second value of useStore
   const dispatch = useStore(false)[1];
 
   const toggleFavHandler = () => {
