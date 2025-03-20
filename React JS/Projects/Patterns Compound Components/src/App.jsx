@@ -46,7 +46,10 @@ function App() {
       <section>
         <h2>Why work with us?</h2>
 
+        {/* Compound Components */}
         <Accordion className="accordion">
+
+
           <Accordion.Item id="experience" className="accordion-item">
             <Accordion.Title className="accordion-item-title">
               We got 20 years of experience
@@ -61,6 +64,8 @@ function App() {
               </article>
             </Accordion.Content>
           </Accordion.Item>
+
+
           <Accordion.Item id="local-guides" className="accordion-item">
             <Accordion.Title className="accordion-item-title">
               We are working with local guides
@@ -75,10 +80,17 @@ function App() {
               </article>
             </Accordion.Content>
           </Accordion.Item>
+
+
         </Accordion>
+
       </section>
+
       <section>
+
+        {/* Render Props Pattern */}
         <SearchableList items={PLACES} itemKeyFn={(item) => item.id}>
+          {/* Passing fn and get para from children */}
           {(item) => <Place item={item} />}
         </SearchableList>
         <SearchableList items={['item 1', 'item 2']} itemKeyFn={(item) => item}>

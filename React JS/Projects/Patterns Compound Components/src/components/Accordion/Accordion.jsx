@@ -9,6 +9,9 @@ const AccordionContext = createContext();
 export function useAccordionContext() {
   const ctx = useContext(AccordionContext);
 
+  console.log(ctx);
+  
+
   if (!ctx) {
     throw new Error(
       'Accordion-related components must be wrapped by <Accordion>.'
@@ -37,6 +40,7 @@ export default function Accordion({ children, className }) {
   );
 }
 
+// create object for Other different child references.
 Accordion.Item = AccordionItem;
 Accordion.Title = AccordionTitle;
 Accordion.Content = AccordionContent;

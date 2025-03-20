@@ -13,6 +13,7 @@ export default function SearchableList({ items, itemKeyFn, children }) {
       clearTimeout(lastChange.current)
     }
 
+    // Debouncing - time threshold (user stop typing certain time)
     lastChange.current = setTimeout(() => {
       lastChange.current = null
       setSearchTerm(event.target.value);
